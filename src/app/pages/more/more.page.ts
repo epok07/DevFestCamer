@@ -2,6 +2,7 @@ import { Component, inject } from '@angular/core';
 
 import { ConferenceService } from '../../core/conference.service';
 import { Conference } from '../../core/models';
+import { ThemeService } from '../../core/theme.service';
 
 interface MoreTile {
   path: string;
@@ -19,6 +20,7 @@ interface MoreTile {
 })
 export class MorePage {
   readonly conf = inject(ConferenceService);
+  readonly theme = inject(ThemeService);
 
   get c(): Conference {
     return this.conf.data()!;

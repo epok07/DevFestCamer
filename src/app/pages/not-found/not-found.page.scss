@@ -13,7 +13,7 @@
   letter-spacing: -0.05em;
   line-height: 1;
   color: transparent;
-  background: linear-gradient(100deg, #5cf2c4, #7aa2ff);
+  background: linear-gradient(100deg, var(--df-accent), var(--df-accent-2));
   -webkit-background-clip: text;
   background-clip: text;
 }

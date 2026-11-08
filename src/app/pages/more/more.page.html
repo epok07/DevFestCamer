@@ -58,6 +58,25 @@
     }
 
     <section class="df-section">
+      <span class="df-eyebrow">Apparence</span>
+      <h2 class="df-title df-title--page">Confort de lecture</h2>
+      <div class="df-card df-theme-row">
+        <div>
+          <h3 class="df-card__title">Thème clair</h3>
+          <p class="df-card__text">
+            Bascule entre le thème sombre « terminal » et une palette claire,
+            plus lisible en plein jour. Le choix est mémorisé sur cet appareil.
+          </p>
+        </div>
+        <ion-toggle
+          [checked]="theme.isLight()"
+          (ionChange)="theme.toggle($event.detail.checked)"
+          aria-label="Activer le thème clair"
+        ></ion-toggle>
+      </div>
+    </section>
+
+    <section class="df-section">
       <span class="df-eyebrow">Contact</span>
       <h2 class="df-title df-title--page">Une question ?</h2>
       <p class="df-sub">
