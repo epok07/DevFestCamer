@@ -1,0 +1,75 @@
+/* DevFestCamer theme — dark, terminal-inspired, accessible. */
+:root {
+  --df-bg: #060b13;
+  --df-bg-soft: #08111d;
+  --df-panel: #0b1626;
+  --df-panel-2: #0e1c30;
+  --df-panel-3: #122238;
+  --df-line: rgba(122, 162, 255, 0.16);
+  --df-line-strong: rgba(92, 242, 196, 0.38);
+  --df-text: #e6eef8;
+  --df-muted: #8ba1b8;
+  --df-dim: #667d94;
+  --df-accent: #5cf2c4;
+  --df-accent-2: #7aa2ff;
+  --df-warn: #ffcc66;
+  --df-danger: #ff6b8a;
+  --df-google-blue: #4285f4;
+  --df-google-red: #ea4335;
+  --df-google-yellow: #fbbc05;
+  --df-google-green: #34a853;
+  --df-radius: 18px;
+  --df-shadow: 0 18px 50px rgba(0, 0, 0, 0.35);
+  --df-font-body: "Inter", "Segoe UI", system-ui, -apple-system, sans-serif;
+  --df-font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+
+  --ion-font-family: var(--df-font-body);
+  --ion-background-color: var(--df-bg);
+  --ion-background-color-rgb: 6, 11, 19;
+  --ion-text-color: var(--df-text);
+  --ion-text-color-rgb: 230, 238, 248;
+  --ion-card-background: var(--df-panel);
+  --ion-item-background: transparent;
+  --ion-toolbar-background: transparent;
+  --ion-tab-bar-background: rgba(6, 11, 19, 0.92);
+  --ion-border-color: var(--df-line);
+
+  --ion-color-primary: #5cf2c4;
+  --ion-color-primary-rgb: 92, 242, 196;
+  --ion-color-primary-contrast: #04120e;
+  --ion-color-primary-contrast-rgb: 4, 18, 14;
+  --ion-color-primary-shade: #51d5ac;
+  --ion-color-primary-tint: #6cf3ca;
+
+  --ion-color-secondary: #7aa2ff;
+  --ion-color-secondary-rgb: 122, 162, 255;
+  --ion-color-secondary-contrast: #04101f;
+  --ion-color-secondary-contrast-rgb: 4, 16, 31;
+  --ion-color-secondary-shade: #6b8fe0;
+  --ion-color-secondary-tint: #87adff;
+
+  --ion-color-tertiary: #ffcc66;
+  --ion-color-tertiary-rgb: 255, 204, 102;
+  --ion-color-tertiary-contrast: #1c1405;
+  --ion-color-tertiary-contrast-rgb: 28, 20, 5;
+  --ion-color-tertiary-shade: #e0b45a;
+  --ion-color-tertiary-tint: #ffd175;
+
+  --ion-color-success: #34a853;
+  --ion-color-success-rgb: 52, 168, 83;
+  --ion-color-success-contrast: #ffffff;
+  --ion-color-success-shade: #2e9449;
+  --ion-color-success-tint: #48b164;
+
+  --ion-color-warning: #fbbc05;
+  --ion-color-warning-rgb: 251, 188, 5;
+  --ion-color-warning-contrast: #1c1405;
+  --ion-color-warning-shade: #dda504;
+  --ion-color-warning-tint: #fbc31e;
+
+  --ion-color-danger: #ff6b8a;
+  --ion-color-danger-rgb: 255, 107, 138;
+  --ion-color-danger-contrast: #1f050b;
+  --ion-color-danger-shade: #e05e79;
+  --ion-color-danger-tint: #ff7a96;
+}

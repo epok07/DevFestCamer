@@ -1,0 +1,123 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-title>À propos</ion-title>
+    <ion-buttons slot="start">
+      <a class="df-btn df-btn--ghost" [routerLink]="['/', c.year, 'more']">
+        <ion-icon name="arrow-back-outline"></ion-icon>
+        Plus
+      </a>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <app-year-switcher></app-year-switcher>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class="df-page df-page--narrow">
+    <span class="df-eyebrow">Le manifeste</span>
+    <h1 class="df-title df-title--page">{{ c.theme }}</h1>
+    <p class="df-sub">{{ c.manifesto }}</p>
+
+    <section class="df-card" style="margin-top: 22px">
+      <span class="df-eyebrow">L’édition en chiffres</span>
+      <div class="df-grid df-grid--stats" style="margin-top: 14px">
+        @for (stat of c.stats; track stat) {
+          <div class="df-stat">
+            <span class="df-stat__value">{{ stat.value }}</span>
+            <span class="df-stat__label">{{ stat.label }}</span>
+          </div>
+        }
+      </div>
+    </section>
+
+    <section class="df-section">
+      <span class="df-eyebrow">L’application</span>
+      <h2 class="df-title df-title--page">DevFestCamer</h2>
+      <p class="df-sub">
+        DevFestCamer est une application compagnon pour les DevFest du Cameroun,
+        pensée pour être légère, installable et utilisable hors-ligne. Chaque
+        édition possède ses propres données : l’application ne dépend pas d’une
+        API distante pour afficher le programme ou le plan.
+      </p>
+
+      <dl class="df-kv" style="margin-top: 18px">
+        <dt>Édition</dt>
+        <dd>{{ c.name }} — {{ c.dateLabel }}</dd>
+        <dt>Lieu</dt>
+        <dd>{{ c.venue.name }}, {{ c.city }}</dd>
+        <dt>Organisation</dt>
+        <dd>{{ c.chapter }}</dd>
+        <dt>Contact</dt>
+        <dd><a [href]="'mailto:' + c.links.contactEmail">{{ c.links.contactEmail }}</a></dd>
+        <dt>Site</dt>
+        <dd><a [href]="c.links.site" target="_blank" rel="noopener">{{ c.links.site }}</a></dd>
+      </dl>
+    </section>
+
+    <section class="df-section">
+      <span class="df-eyebrow">Données</span>
+      <h2 class="df-title df-title--page">Comment mettre à jour une édition</h2>
+      <p class="df-sub">
+        Tout le contenu vit dans des fichiers JSON versionnés avec le code. Pour
+        corriger un texte ou ajouter une session, modifiez le fichier de
+        l’année puis reconstruisez l’application.
+      </p>
+
+      <pre class="df-code"><code>src/assets/data/
+        ├── editions.json   # index des années
+        ├── {{ c.year }}.json       # contenu complet de l’édition
+      └── ...</code></pre>
+
+      <p class="df-card__text">
+        Une nouvelle année = un nouveau fichier <code>{{ c.year + 1 }}.json</code> et
+        une entrée dans <code>editions.json</code> qui n’est plus
+        <code>planned</code>. Les routes acceptent déjà n’importe quelle année :
+        <code>/{{ c.year + 1 }}/agenda</code> fonctionnera dès que ces deux
+        conditions sont remplies.
+      </p>
+
+      <div class="df-notice" style="margin-top: 14px">
+        Les participant·es et certains témoignages de cette édition sont des
+        exemples marqués <code>demo</code>. Remplacez les URL
+        <code>example.com</code> par les vrais liens avant la mise en ligne.
+      </div>
+    </section>
+
+    <section class="df-section">
+      <span class="df-eyebrow">Technique</span>
+      <h2 class="df-title df-title--page">Construit avec</h2>
+      <div class="df-row">
+        <span class="df-chip">Ionic</span>
+        <span class="df-chip">Angular</span>
+        <span class="df-chip">Signals</span>
+        <span class="df-chip">PWA</span>
+        <span class="df-chip">SVG</span>
+      </div>
+      <p class="df-card__text" style="margin-top: 14px">
+        Application web progressive : installable depuis le navigateur et
+        préparée pour un portage Capacitor (Android / iOS) ultérieur. Les
+        préférences d’affichage suivent le thème sombre et les animations
+        respectent <code>prefers-reduced-motion</code>.
+      </p>
+    </section>
+
+    <footer class="df-about-footer">
+      <span class="df-mono">DEVFESTCAMER // {{ year }}</span>
+      <p class="df-muted">
+        Projet communautaire non officiel. Les marques et contenus cités
+        appartiennent à leurs détenteurs respectifs.
+      </p>
+      <div class="df-actions">
+        <a class="df-btn" [href]="c.links.site" target="_blank" rel="noopener">
+          <ion-icon name="globe-outline"></ion-icon>
+          Site officiel
+        </a>
+        <a class="df-btn" [href]="'mailto:' + c.links.contactEmail">
+          <ion-icon name="mail-outline"></ion-icon>
+          Contact
+        </a>
+      </div>
+    </footer>
+  </div>
+</ion-content>

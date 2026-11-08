@@ -1,0 +1,27 @@
+{
+  "name": "DevFestCamer — Compagnon DevFest Cameroun",
+  "short_name": "DevFestCamer",
+  "description": "Programme, intervenant·es, plan du lieu, matériel et contacts du DevFest Cameroun.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#060b13",
+  "theme_color": "#060b13",
+  "lang": "fr",
+  "categories": ["events", "education", "productivity"],
+  "icons": [
+    {
+      "src": "icons/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "icons/icon-maskable.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "maskable"
+    }
+  ]
+}

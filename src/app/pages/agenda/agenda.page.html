@@ -1,0 +1,152 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-title>Agenda</ion-title>
+    <ion-buttons slot="end">
+      <app-year-switcher></app-year-switcher>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class="df-page">
+    <span class="df-eyebrow">{{ c.dateLabel }}</span>
+    <h1 class="df-title df-title--page">Programme</h1>
+    <p class="df-sub" style="margin-bottom: 16px">
+      Une journée, trois salles, cinq tracks techniques. Filtrez par track et
+      ouvrez une session pour les détails et le calendrier.
+    </p>
+
+    <div class="df-actions" style="margin-bottom: 18px">
+      <button class="df-btn" type="button" (click)="addDayToCalendar()">
+        <ion-icon name="calendar-outline"></ion-icon>
+        Télécharger la journée (.ics)
+      </button>
+    </div>
+
+    <div class="df-row" style="margin-bottom: 10px">
+      <button
+        class="df-chip df-chip--button"
+        type="button"
+        [class.is-active]="trackFilter() === 'all'"
+        (click)="selectTrack('all')"
+        >
+        Tous
+      </button>
+      @for (track of c.tracks; track track) {
+        <button
+          class="df-chip df-chip--button"
+          type="button"
+          [class.is-active]="trackFilter() === track.id"
+          (click)="selectTrack(track.id)"
+          >
+          <span class="df-track-dot" [style.--track]="track.color"></span>
+          {{ track.name }}
+        </button>
+      }
+    </div>
+
+    <div class="df-day">
+      <div class="df-row" style="justify-content: space-between">
+        <strong>{{ day?.label }}</strong>
+        <span class="df-mono df-dim">{{ filteredSessions().length }} sessions</span>
+      </div>
+    </div>
+
+    @if (filteredSessions().length) {
+      <div class="df-timeline">
+        @for (session of filteredSessions(); track session) {
+          <button
+            class="df-session"
+            type="button"
+            (click)="open(session)"
+            >
+            <span class="df-session__time">{{ session.start }}<small>{{ session.end }}</small></span>
+            <span class="df-session__body">
+              <span class="df-row" style="gap: 8px">
+                <span class="df-badge" [style.color]="trackColor(session.trackId)">
+                  {{ trackName(session.trackId) }}
+                </span>
+                <span class="df-mono df-dim" style="font-size: 0.66rem">
+                  {{ roomName(session.roomId) }} · {{ session.language }} ·
+                  {{ session.level }}
+                </span>
+              </span>
+              <span class="df-session__title">{{ session.title }}</span>
+              <span class="df-session__sub">
+                {{ speakerNames(session.speakerIds) || session.format }}
+              </span>
+            </span>
+            <ion-icon class="df-session__chevron" name="chevron-forward-outline"></ion-icon>
+          </button>
+        }
+      </div>
+    } @else {
+      <div class="df-empty">Aucune session pour ce filtre.</div>
+    }
+
+  </div>
+</ion-content>
+
+<ion-modal class="df-modal" [isOpen]="!!selected()" (didDismiss)="close()">
+  <ng-template>
+    @if (selected(); as session) {
+      <div class="df-modal__body">
+        <div class="df-spread">
+          <span class="df-chip" [style.--track]="trackColor(session.trackId)">
+            <span class="df-track-dot" [style.--track]="trackColor(session.trackId)"></span>
+            {{ trackName(session.trackId) }}
+          </span>
+          <button class="df-btn df-btn--ghost" type="button" (click)="close()">
+            <ion-icon name="close-outline"></ion-icon>
+            Fermer
+          </button>
+        </div>
+
+        <h2 class="df-title df-title--page" style="margin-top: 14px">
+          {{ session.title }}
+        </h2>
+
+        <div class="df-row" style="margin: 10px 0 16px">
+          <span class="df-chip">
+            <ion-icon name="time-outline"></ion-icon>
+            {{ session.start }} — {{ session.end }}
+          </span>
+          <span class="df-chip">
+            <ion-icon name="location-outline"></ion-icon>
+            {{ roomName(session.roomId) }}
+          </span>
+          <span class="df-chip">{{ session.language }}</span>
+          <span class="df-chip">{{ session.level }}</span>
+        </div>
+
+        <p class="df-sub">{{ session.abstract }}</p>
+
+        @if (conf.speakers(session.speakerIds).length) {
+          <h3 class="df-section-label">Intervenant·es</h3>
+          <div class="df-list">
+            @for (speaker of conf.speakers(session.speakerIds); track speaker.id) {
+              <a class="df-card df-card--link" [routerLink]="['/', c.year, 'speakers', speaker.id]" (click)="close()">
+                <div class="df-card__top">
+                  <span class="df-avatar">{{ speaker.name | initials }}</span>
+                  <div>
+                    <h4 class="df-card__title">{{ speaker.name }}</h4>
+                    <p class="df-card__text" style="margin: 4px 0 0">
+                      {{ speaker.role }}@if (speaker.company) { · {{ speaker.company }} }
+                    </p>
+                  </div>
+                </div>
+              </a>
+            }
+          </div>
+        }
+
+        <div class="df-actions">
+          <button class="df-btn df-btn--primary" type="button" (click)="addToCalendar(session)">
+            <ion-icon name="calendar-outline"></ion-icon>
+            Ajouter à mon calendrier
+          </button>
+        </div>
+      </div>
+    }
+  </ng-template>
+</ion-modal>

@@ -1,0 +1,19 @@
+.df-notfound {
+  display: flex;
+  min-height: 80vh;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.df-notfound__code {
+  margin: 14px 0 0;
+  font-family: var(--df-font-mono);
+  font-size: clamp(2rem, 10vw, 4.4rem);
+  font-weight: 800;
+  letter-spacing: -0.05em;
+  line-height: 1;
+  color: transparent;
+  background: linear-gradient(100deg, #5cf2c4, #7aa2ff);
+  -webkit-background-clip: text;
+  background-clip: text;
+}

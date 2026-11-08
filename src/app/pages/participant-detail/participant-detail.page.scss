@@ -1,0 +1,14 @@
+.df-profile {
+  margin-top: 10px;
+  padding: 22px;
+}
+
+@media (max-width: 480px) {
+  .df-profile {
+    padding: 16px;
+  }
+
+  .df-profile .df-card__top {
+    flex-direction: column;
+  }
+}

@@ -1,0 +1,45 @@
+.df-sponsor {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  border: 1px solid var(--df-line);
+  border-radius: 12px;
+  background: var(--df-panel);
+  color: var(--df-text);
+  font-size: 0.82rem;
+
+  small {
+    color: var(--df-dim);
+    font-family: var(--df-font-mono);
+    font-size: 0.6rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+}
+
+.df-sponsor__mark {
+  font-family: var(--df-font-mono);
+  font-weight: 700;
+  font-size: 0.78rem;
+  letter-spacing: 0.02em;
+}
+
+.df-footer {
+  margin-top: 46px;
+  padding-top: 20px;
+  border-top: 1px solid var(--df-line);
+
+  p {
+    max-width: 60ch;
+    margin: 8px 0 12px;
+    font-size: 0.82rem;
+    line-height: 1.6;
+  }
+
+  code {
+    font-family: var(--df-font-mono);
+    font-size: 0.72rem;
+    color: var(--df-accent);
+  }
+}

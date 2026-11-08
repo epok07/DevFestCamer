@@ -1,0 +1,82 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-title>Participant·e</ion-title>
+    <ion-buttons slot="start">
+      <a class="df-btn df-btn--ghost" [routerLink]="['/', c.year, 'more', 'participants']">
+        <ion-icon name="arrow-back-outline"></ion-icon>
+        Annuaire
+      </a>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <app-year-switcher></app-year-switcher>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class="df-page df-page--narrow">
+    @if (participant(); as p) {
+      <section class="df-card df-profile">
+        <div class="df-card__top">
+          <span class="df-avatar df-avatar--lg">{{ p.name | initials }}</span>
+          <div>
+            <h1 class="df-title df-title--page" style="margin: 0 0 4px">{{ p.name }}</h1>
+            <p class="df-muted" style="margin: 0">
+              {{ p.role }}@if (p.company) {
+              · {{ p.company }}
+            }
+          </p>
+        </div>
+      </div>
+
+      <p class="df-sub" style="margin-top: 18px">{{ p.bio }}</p>
+
+      <div class="df-row" style="margin-top: 4px">
+        @for (item of p.tags; track item) {
+          <span class="df-chip">{{ item }}</span>
+        }
+      </div>
+
+      @if (p.links.length) {
+        <div class="df-actions">
+          @for (link of p.links; track link) {
+            <a
+              class="df-btn df-btn--primary"
+              [href]="link.url"
+              target="_blank"
+              rel="noopener"
+              >
+              <ion-icon [name]="link.icon || 'link-outline'"></ion-icon>
+              {{ link.label }}
+            </a>
+          }
+        </div>
+      } @else {
+        <p class="df-card__text" style="margin-top: 16px">
+          Cette personne n’a pas encore ajouté de lien.
+        </p>
+      }
+
+    </section>
+
+    @if (c.demo) {
+      <div class="df-notice" style="margin-top: 16px">
+        Fiche de démonstration : remplacez les liens <code>example.com</code>
+        par les vrais profils avant la mise en ligne.
+      </div>
+    }
+
+    <div class="df-actions">
+      <a class="df-btn" [href]="'mailto:' + c.links.contactEmail">
+        <ion-icon name="mail-outline"></ion-icon>
+        Signaler une correction
+      </a>
+    </div>
+  } @else {
+    <div class="df-empty">
+      Profil introuvable.
+      <a [routerLink]="['/', c.year, 'more', 'participants']">Retour à l’annuaire</a>
+    </div>
+  }
+</div>
+</ion-content>

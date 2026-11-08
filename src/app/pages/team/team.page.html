@@ -1,0 +1,75 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-title>Équipe</ion-title>
+    <ion-buttons slot="start">
+      <a class="df-btn df-btn--ghost" [routerLink]="['/', c.year, 'more']">
+        <ion-icon name="arrow-back-outline"></ion-icon>
+        Plus
+      </a>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <app-year-switcher></app-year-switcher>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class="df-page">
+    <span class="df-eyebrow">GDG Douala</span>
+    <h1 class="df-title df-title--page">L’équipe organisatrice</h1>
+    <p class="df-sub">
+      Des bénévoles et des organisateur·rices qui préparent l’événement toute
+      l’année. Pour une question précise, contactez la personne dont le sujet
+      correspond à votre besoin — sinon, écrivez au contact général.
+    </p>
+
+    <div class="df-grid df-grid--2" style="margin-top: 20px">
+      @for (member of members; track member) {
+        <article class="df-card df-member">
+          <div class="df-card__top">
+            <span class="df-avatar">{{ member.name | initials }}</span>
+            <div style="min-width: 0">
+              <h2 class="df-card__title">{{ member.name }}</h2>
+              <p class="df-card__text" style="margin: 4px 0 0">{{ member.role }}</p>
+            </div>
+          </div>
+          <p class="df-card__text">{{ member.focus }}</p>
+          <div class="df-actions" style="margin-top: 4px">
+            @if (member.email) {
+              <a class="df-btn df-btn--ghost" [href]="mailto(member)">
+                <ion-icon name="mail-outline"></ion-icon>
+                Écrire
+              </a>
+            }
+            @for (link of member.links; track link) {
+              <a
+                class="df-btn df-btn--ghost"
+                [href]="link.url"
+                target="_blank"
+                rel="noopener"
+                >
+                <ion-icon [name]="link.icon || 'link-outline'"></ion-icon>
+                {{ link.label }}
+              </a>
+            }
+          </div>
+        </article>
+      }
+    </div>
+
+    <section class="df-section">
+      <span class="df-eyebrow">Contact général</span>
+      <h2 class="df-title df-title--page">Une question transversale ?</h2>
+      <p class="df-sub">
+        Inscription, accessibilité, presse, partenariat ou bénévolat : le contact
+        général est relevé par l’équipe.
+      </p>
+      <div class="df-actions">
+        <a class="df-btn df-btn--primary" [href]="'mailto:' + c.links.contactEmail">
+          <ion-icon name="mail-outline"></ion-icon>
+          {{ c.links.contactEmail }}
+        </a>
+      </div>
+    </section>
+  </div>
+</ion-content>

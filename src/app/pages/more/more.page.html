@@ -1,0 +1,86 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-title>Plus</ion-title>
+    <ion-buttons slot="end">
+      <app-year-switcher></app-year-switcher>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class="df-page">
+    <span class="df-eyebrow">{{ c.name }}</span>
+    <h1 class="df-title df-title--page">Tout le reste</h1>
+    <p class="df-sub">
+      L’annuaire des participant·es, les ressources, les partenaires, l’équipe
+      et les informations pratiques de l’édition.
+    </p>
+
+    <div class="df-grid df-grid--2" style="margin-top: 20px">
+      @for (tile of tiles; track tile) {
+        <a
+          class="df-card df-card--link df-tile"
+          [routerLink]="['/', c.year, 'more', tile.path]"
+          >
+          <span class="df-avatar">
+            <ion-icon [name]="tile.icon" style="font-size: 1.2rem"></ion-icon>
+          </span>
+          <div>
+            <div class="df-spread">
+              <h2 class="df-card__title">{{ tile.title }}</h2>
+              <span class="df-mono df-dim" style="font-size: 0.62rem">{{ tile.meta }}</span>
+            </div>
+            <p class="df-card__text">{{ tile.description }}</p>
+          </div>
+          <ion-icon class="df-tile__chevron" name="chevron-forward-outline"></ion-icon>
+        </a>
+      }
+    </div>
+
+    @if (externalLinks.length) {
+      <section class="df-section">
+        <span class="df-eyebrow">Liens officiels</span>
+        <h2 class="df-title df-title--page">Autour de l’événement</h2>
+        <div class="df-actions">
+          @for (link of externalLinks; track link) {
+            <a
+              class="df-btn"
+              [href]="link.url"
+              target="_blank"
+              rel="noopener"
+              >
+              <ion-icon [name]="link.icon"></ion-icon>
+              {{ link.label }}
+            </a>
+          }
+        </div>
+      </section>
+    }
+
+    <section class="df-section">
+      <span class="df-eyebrow">Contact</span>
+      <h2 class="df-title df-title--page">Une question ?</h2>
+      <p class="df-sub">
+        Écrivez à l’équipe GDG Douala : elle répond sur l’inscription, le
+        programme, l’accessibilité ou les partenariats.
+      </p>
+      <div class="df-actions">
+        <a class="df-btn df-btn--primary" [href]="'mailto:' + c.links.contactEmail">
+          <ion-icon name="mail-outline"></ion-icon>
+          {{ c.links.contactEmail }}
+        </a>
+        @for (social of c.links.socials; track social) {
+          <a
+            class="df-btn"
+            [href]="social.url"
+            target="_blank"
+            rel="noopener"
+            >
+            <ion-icon [name]="social.icon || 'globe-outline'"></ion-icon>
+            {{ social.label }}
+          </a>
+        }
+      </div>
+    </section>
+  </div>
+</ion-content>

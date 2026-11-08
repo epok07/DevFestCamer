@@ -1,0 +1,21 @@
+<ion-content [fullscreen]="true">
+  <div class="df-page df-page--narrow df-notfound">
+    <span class="df-eyebrow">Erreur 404</span>
+    <p class="df-notfound__code">SIGNAL&nbsp;PERDU</p>
+    <h1 class="df-title df-title--page">Cette page n’existe pas.</h1>
+    <p class="df-sub">
+      Le lien est peut-être obsolète, ou l’édition demandée n’a pas encore de
+      données. Revenez à l’accueil pour choisir une année.
+    </p>
+    <div class="df-actions">
+      <a class="df-btn df-btn--primary" routerLink="/">
+        <ion-icon name="home-outline"></ion-icon>
+        Retour à l’accueil
+      </a>
+      <a class="df-btn" routerLink="/2026/agenda">
+        <ion-icon name="calendar-outline"></ion-icon>
+        Programme 2026
+      </a>
+    </div>
+  </div>
+</ion-content>

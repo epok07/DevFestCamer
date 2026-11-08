@@ -1,0 +1,102 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-title>Participant·es</ion-title>
+    <ion-buttons slot="start">
+      <a class="df-btn df-btn--ghost" [routerLink]="['/', c.year, 'more']">
+        <ion-icon name="arrow-back-outline"></ion-icon>
+        Plus
+      </a>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <app-year-switcher></app-year-switcher>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class="df-page">
+    <span class="df-eyebrow">Annuaire</span>
+    <h1 class="df-title df-title--page">Qui sera là ?</h1>
+    <p class="df-sub">
+      Un annuaire léger des participant·es et de leurs liens. Cherchez par nom,
+      rôle, entreprise ou centre d’intérêt, puis ouvrez une fiche pour les liens.
+    </p>
+
+    @if (c.demo) {
+      <div class="df-notice" style="margin-top: 14px">
+        <strong>Données de démonstration.</strong> Les profils ci-dessous sont des
+        exemples. Les personnes réelles pourront ajouter leur fiche avant
+        l’événement.
+      </div>
+    }
+
+    <div class="df-tools">
+      <ion-searchbar
+        class="df-search"
+        placeholder="Rechercher une personne, un rôle, un intérêt"
+        [debounce]="120"
+        (ionInput)="onSearch($event)"
+      ></ion-searchbar>
+
+      <div class="df-row">
+        <button
+          class="df-chip df-chip--button"
+          type="button"
+          [class.is-active]="tag() === 'all'"
+          (click)="selectTag('all')"
+          >
+          Tous
+        </button>
+        @for (item of tags(); track item) {
+          <button
+            class="df-chip df-chip--button"
+            type="button"
+            [class.is-active]="tag() === item"
+            (click)="selectTag(item)"
+            >
+            {{ item }}
+          </button>
+        }
+      </div>
+    </div>
+
+    <div class="df-row df-dim df-mono" style="margin: 16px 0 10px; font-size: 0.7rem">
+      {{ filtered().length }} participant·e·s
+    </div>
+
+    @if (filtered().length) {
+      <div class="df-grid df-grid--3">
+        @for (participant of filtered(); track participant) {
+          <a
+            class="df-card df-card--link"
+            [routerLink]="['/', c.year, 'more', 'participants', participant.id]"
+            >
+            <div class="df-card__top">
+              <span class="df-avatar">{{ participant.name | initials }}</span>
+              <div style="min-width: 0">
+                <h2 class="df-card__title">{{ participant.name }}</h2>
+                <p class="df-card__text" style="margin: 4px 0 0">
+                  {{ participant.role }}@if (participant.company) {
+                  · {{ participant.company }}
+                }
+              </p>
+            </div>
+          </div>
+          <div class="df-row" style="margin-top: 12px">
+            @for (item of participant.tags; track item) {
+              <span class="df-chip">{{ item }}</span>
+            }
+          </div>
+          <div class="df-card__meta">
+            <span>{{ participant.links.length }} lien·s</span>
+            <ion-icon name="arrow-forward-outline"></ion-icon>
+          </div>
+        </a>
+      }
+    </div>
+  } @else {
+    <div class="df-empty">Personne ne correspond à cette recherche.</div>
+  }
+
+</div>
+</ion-content>

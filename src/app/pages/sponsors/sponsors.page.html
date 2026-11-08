@@ -1,0 +1,83 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-title>Partenaires</ion-title>
+    <ion-buttons slot="start">
+      <a class="df-btn df-btn--ghost" [routerLink]="['/', c.year, 'more']">
+        <ion-icon name="arrow-back-outline"></ion-icon>
+        Plus
+      </a>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <app-year-switcher></app-year-switcher>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class="df-page">
+    <span class="df-eyebrow">Ils rendent l’édition possible</span>
+    <h1 class="df-title df-title--page">Partenaires</h1>
+    <p class="df-sub">
+      Les entreprises et communautés qui soutiennent le DevFest Douala. Un
+      partenariat ne conditionne ni le contenu des talks, ni la ligne éditoriale
+      de l’application.
+    </p>
+
+    @for (group of groups(); track group) {
+      <section class="df-section">
+        <div class="df-spread">
+          <div>
+            <span class="df-eyebrow">Niveau de partenariat</span>
+            <h2 class="df-title df-title--page">{{ group.tier }}</h2>
+          </div>
+          <span class="df-mono df-dim" style="font-size: 0.66rem">
+            {{ group.sponsors.length }} partenaire·s
+          </span>
+        </div>
+        <div class="df-grid df-grid--2" style="margin-top: 14px">
+          @for (sponsor of group.sponsors; track sponsor) {
+            <a
+              class="df-card df-card--link df-sponsor-card"
+              [href]="sponsor.url || c.links.site"
+              target="_blank"
+              rel="noopener"
+              >
+              <span class="df-sponsor-card__mark" [style.color]="sponsor.accent">
+                {{ sponsor.monogram }}
+              </span>
+              <div>
+                <h3 class="df-card__title">{{ sponsor.name }}</h3>
+                <p class="df-card__text">{{ sponsor.description }}</p>
+              </div>
+              <ion-icon class="df-sponsor-card__chevron" name="open-outline"></ion-icon>
+            </a>
+          }
+        </div>
+      </section>
+    }
+
+    <section class="df-section">
+      <span class="df-eyebrow">Devenir partenaire</span>
+      <h2 class="df-title df-title--page">Soutenir l’édition</h2>
+      <p class="df-sub">
+        Le dossier de sponsoring détaille les formats, l’audience et les
+        engagements. Pour en discuter, contactez l’équipe organisatrice.
+      </p>
+      <div class="df-actions">
+        @if (c.materials.length) {
+          <a
+            class="df-btn df-btn--primary"
+            [href]="'mailto:' + c.links.contactEmail + '?subject=Partenariat%20DevFest%20Douala%20' + c.year"
+            >
+            <ion-icon name="mail-outline"></ion-icon>
+            Contacter l’équipe
+          </a>
+        }
+        <a class="df-btn" [routerLink]="['/', c.year, 'more', 'materials']">
+          <ion-icon name="folder-open-outline"></ion-icon>
+          Dossier de sponsoring
+        </a>
+      </div>
+    </section>
+  </div>
+</ion-content>

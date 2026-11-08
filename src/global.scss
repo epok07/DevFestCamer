@@ -1,0 +1,611 @@
+/*
+ * DevFestCamer global styles.
+ * Ionic CSS first, then the app's own design layer.
+ */
+@import "@ionic/angular/css/core.css";
+@import "@ionic/angular/css/normalize.css";
+@import "@ionic/angular/css/structure.css";
+@import "@ionic/angular/css/typography.css";
+@import "@ionic/angular/css/display.css";
+@import "@ionic/angular/css/padding.css";
+@import "@ionic/angular/css/float-elements.css";
+@import "@ionic/angular/css/text-alignment.css";
+@import "@ionic/angular/css/text-transformation.css";
+@import "@ionic/angular/css/flex-utils.css";
+@import "@ionic/angular/css/palettes/dark.always.css";
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  background: var(--df-bg);
+  color: var(--df-text);
+}
+
+body {
+  font-family: var(--df-font-body);
+  background-image:
+    radial-gradient(circle at 12% -10%, rgba(92, 242, 196, 0.08), transparent 38%),
+    radial-gradient(circle at 92% 0%, rgba(122, 162, 255, 0.09), transparent 36%);
+  background-attachment: fixed;
+}
+
+ion-content {
+  --background: transparent;
+  --padding-bottom: 24px;
+}
+
+ion-content::part(background) {
+  background:
+    linear-gradient(rgba(122, 162, 255, 0.028) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(122, 162, 255, 0.028) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+
+ion-toolbar {
+  --background: rgba(6, 11, 19, 0.82);
+  --border-color: var(--df-line);
+  --min-height: 58px;
+  backdrop-filter: blur(14px);
+}
+
+ion-title {
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+ion-header {
+  background: transparent;
+}
+
+a {
+  color: var(--df-accent);
+  text-decoration: none;
+}
+
+/* ---------------------------------------------------------------- layout */
+.df-page {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 20px 18px 40px;
+}
+
+.df-page--narrow {
+  max-width: 820px;
+}
+
+.df-section {
+  margin-top: 34px;
+}
+
+.df-section:first-child {
+  margin-top: 8px;
+}
+
+.df-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--df-font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--df-accent);
+}
+
+.df-eyebrow::before {
+  content: "";
+  width: 18px;
+  height: 1px;
+  background: var(--df-accent);
+  opacity: 0.7;
+}
+
+.df-title {
+  margin: 10px 0 6px;
+  font-size: clamp(1.9rem, 6vw, 3.2rem);
+  line-height: 1.04;
+  letter-spacing: -0.04em;
+  font-weight: 800;
+}
+
+.df-title--page {
+  font-size: clamp(1.55rem, 4.5vw, 2.3rem);
+}
+
+.df-sub {
+  max-width: 66ch;
+  color: var(--df-muted);
+  font-size: 1rem;
+  line-height: 1.65;
+}
+
+.df-mono {
+  font-family: var(--df-font-mono);
+}
+
+.df-muted {
+  color: var(--df-muted);
+}
+
+.df-dim {
+  color: var(--df-dim);
+}
+
+.df-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+}
+
+.df-spread {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.df-divider {
+  height: 1px;
+  margin: 28px 0;
+  background: linear-gradient(90deg, var(--df-line), transparent);
+}
+
+/* ----------------------------------------------------------------- cards */
+.df-card {
+  position: relative;
+  display: block;
+  padding: 18px;
+  border: 1px solid var(--df-line);
+  border-radius: var(--df-radius);
+  background:
+    linear-gradient(150deg, rgba(122, 162, 255, 0.055), transparent 45%),
+    var(--df-panel);
+  color: var(--df-text);
+  overflow: hidden;
+}
+
+.df-card--link {
+  transition: border-color 150ms ease, transform 150ms ease, background 150ms ease;
+}
+
+.df-card--link:hover,
+.df-card--link:focus-visible {
+  border-color: var(--df-line-strong);
+  transform: translateY(-2px);
+  outline: none;
+}
+
+.df-card__top {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+}
+
+.df-card__title {
+  margin: 0;
+  font-size: 1.05rem;
+  font-weight: 700;
+  letter-spacing: -0.015em;
+  line-height: 1.35;
+}
+
+.df-card__text {
+  margin: 8px 0 0;
+  color: var(--df-muted);
+  font-size: 0.88rem;
+  line-height: 1.6;
+}
+
+.df-card__meta {
+  margin-top: 12px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+  font-family: var(--df-font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.06em;
+  color: var(--df-dim);
+}
+
+.df-grid {
+  display: grid;
+  gap: 14px;
+}
+
+.df-grid--2 {
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+}
+
+.df-grid--3 {
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+}
+
+.df-grid--stats {
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+}
+
+/* ------------------------------------------------------- badges & chips */
+.df-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 6px 11px;
+  border: 1px solid var(--df-line);
+  border-radius: 999px;
+  background: rgba(122, 162, 255, 0.06);
+  color: var(--df-muted);
+  font-family: var(--df-font-mono);
+  font-size: 0.67rem;
+  letter-spacing: 0.05em;
+  white-space: nowrap;
+}
+
+.df-chip--accent {
+  border-color: var(--df-line-strong);
+  color: var(--df-accent);
+  background: rgba(92, 242, 196, 0.08);
+}
+
+.df-chip--button {
+  cursor: pointer;
+  transition: border-color 150ms ease, color 150ms ease, background 150ms ease;
+}
+
+.df-chip--button:hover {
+  border-color: var(--df-line-strong);
+  color: var(--df-text);
+}
+
+.df-chip--button.is-active {
+  border-color: var(--df-accent);
+  color: var(--df-accent);
+  background: rgba(92, 242, 196, 0.1);
+}
+
+.df-track-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--track, var(--df-accent));
+  box-shadow: 0 0 10px var(--track, var(--df-accent));
+  flex: 0 0 auto;
+}
+
+.df-badge {
+  display: inline-block;
+  padding: 3px 8px;
+  border-radius: 6px;
+  background: rgba(122, 162, 255, 0.12);
+  color: var(--df-accent-2);
+  font-family: var(--df-font-mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* ---------------------------------------------------------------- avatar */
+.df-avatar {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  width: 46px;
+  height: 46px;
+  border-radius: 14px;
+  border: 1px solid var(--df-line);
+  background:
+    radial-gradient(circle at 30% 20%, rgba(92, 242, 196, 0.3), transparent 60%),
+    linear-gradient(140deg, #12304a, #0b1626);
+  color: var(--df-text);
+  font-family: var(--df-font-mono);
+  font-weight: 700;
+  font-size: 0.9rem;
+  letter-spacing: 0.04em;
+}
+
+.df-avatar--lg {
+  width: 82px;
+  height: 82px;
+  border-radius: 22px;
+  font-size: 1.4rem;
+}
+
+/* ---------------------------------------------------------------- heroes */
+.df-hero {
+  position: relative;
+  padding: 26px 20px 24px;
+  border: 1px solid var(--df-line);
+  border-radius: 26px;
+  background:
+    radial-gradient(circle at 88% 12%, rgba(92, 242, 196, 0.16), transparent 42%),
+    radial-gradient(circle at 8% 100%, rgba(122, 162, 255, 0.16), transparent 46%),
+    linear-gradient(160deg, #0b1829, #070d17 70%);
+  overflow: hidden;
+}
+
+.df-hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(255, 255, 255, 0.018) 0,
+    rgba(255, 255, 255, 0.018) 1px,
+    transparent 1px,
+    transparent 4px
+  );
+  pointer-events: none;
+}
+
+.df-hero > * {
+  position: relative;
+  z-index: 1;
+}
+
+.df-hero__theme {
+  margin: 8px 0 10px;
+  font-size: clamp(2.1rem, 8vw, 4.2rem);
+  line-height: 0.98;
+  letter-spacing: -0.055em;
+  font-weight: 800;
+  background: linear-gradient(100deg, #f2fff9 10%, #5cf2c4 55%, #7aa2ff 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.df-stat {
+  padding: 16px 14px;
+  border: 1px solid var(--df-line);
+  border-radius: 14px;
+  background: rgba(11, 22, 38, 0.7);
+}
+
+.df-stat__value {
+  display: block;
+  font-family: var(--df-font-mono);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--df-accent);
+}
+
+.df-stat__label {
+  display: block;
+  margin-top: 4px;
+  color: var(--df-dim);
+  font-size: 0.72rem;
+  line-height: 1.35;
+}
+
+/* --------------------------------------------------------------- buttons */
+.df-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 18px;
+}
+
+.df-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 42px;
+  padding: 0 16px;
+  border: 1px solid var(--df-line);
+  border-radius: 12px;
+  background: var(--df-panel-2);
+  color: var(--df-text);
+  font-family: var(--df-font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: border-color 150ms ease, background 150ms ease, transform 150ms ease;
+}
+
+.df-btn:hover {
+  border-color: var(--df-line-strong);
+  transform: translateY(-1px);
+}
+
+.df-btn--primary {
+  border-color: transparent;
+  background: var(--df-accent);
+  color: #04120e;
+  font-weight: 700;
+}
+
+.df-btn--ghost {
+  background: transparent;
+}
+
+.df-btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.df-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--df-font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.05em;
+  color: var(--df-accent);
+}
+
+/* ----------------------------------------------------------------- lists */
+.df-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.df-notice {
+  padding: 12px 14px;
+  border: 1px dashed var(--df-line-strong);
+  border-radius: 12px;
+  background: rgba(92, 242, 196, 0.05);
+  color: var(--df-muted);
+  font-size: 0.82rem;
+  line-height: 1.55;
+}
+
+.df-empty {
+  padding: 38px 18px;
+  border: 1px dashed var(--df-line);
+  border-radius: var(--df-radius);
+  text-align: center;
+  color: var(--df-dim);
+  font-family: var(--df-font-mono);
+  font-size: 0.8rem;
+}
+
+.df-kv {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  gap: 8px 16px;
+  font-size: 0.86rem;
+}
+
+.df-kv dt {
+  color: var(--df-dim);
+  font-family: var(--df-font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.df-kv dd {
+  margin: 0;
+  color: var(--df-text);
+}
+
+/* -------------------------------------------------------------- tab bar */
+.df-tabbar {
+  --background: rgba(6, 11, 19, 0.94);
+  --border: 1px solid var(--df-line);
+  backdrop-filter: blur(16px);
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+.df-tabbar ion-tab-button {
+  --color: var(--df-dim);
+  --color-selected: var(--df-accent);
+  --padding-top: 8px;
+  --padding-bottom: 8px;
+  font-family: var(--df-font-mono);
+  font-size: 0.6rem;
+  letter-spacing: 0.06em;
+}
+
+.df-tabbar ion-tab-button.tab-selected {
+  background: linear-gradient(180deg, rgba(92, 242, 196, 0.09), transparent 70%);
+}
+
+.df-tabbar ion-icon {
+  font-size: 1.3rem;
+  margin-bottom: 3px;
+}
+
+/* --------------------------------------------------------- ionic tweaks */
+ion-searchbar.df-search {
+  --background: var(--df-panel);
+  --border-radius: 12px;
+  --box-shadow: none;
+  --color: var(--df-text);
+  --placeholder-color: var(--df-dim);
+  --icon-color: var(--df-dim);
+  padding: 0;
+}
+
+ion-select.df-select {
+  --placeholder-color: var(--df-dim);
+  border: 1px solid var(--df-line);
+  border-radius: 10px;
+  padding: 0 10px;
+  min-height: 38px;
+  font-family: var(--df-font-mono);
+  font-size: 0.72rem;
+}
+
+ion-button.df-ion-btn {
+  --border-radius: 12px;
+  --box-shadow: none;
+  font-family: var(--df-font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+ion-modal.df-modal {
+  --background: var(--df-panel);
+  --border-radius: 22px;
+  --box-shadow: var(--df-shadow);
+}
+
+ion-modal.df-modal::part(content) {
+  border: 1px solid var(--df-line);
+}
+
+.df-modal__body {
+  padding: 20px 18px 34px;
+}
+
+.df-quote {
+  position: relative;
+  padding: 22px 18px 18px;
+  border: 1px solid var(--df-line);
+  border-radius: var(--df-radius);
+  background: var(--df-panel);
+  color: var(--df-text);
+  line-height: 1.6;
+}
+
+.df-quote::before {
+  content: "“";
+  position: absolute;
+  top: 4px;
+  left: 14px;
+  font-size: 2.6rem;
+  line-height: 1;
+  color: var(--df-accent);
+  opacity: 0.5;
+}
+
+.df-quote p {
+  margin: 14px 0 0;
+  font-size: 0.95rem;
+}
+
+/* ---------------------------------------------------------- responsive */
+@media (min-width: 720px) {
+  .df-page {
+    padding: 30px 28px 60px;
+  }
+
+  .df-hero {
+    padding: 40px 38px 34px;
+  }
+
+  .df-card {
+    padding: 20px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}

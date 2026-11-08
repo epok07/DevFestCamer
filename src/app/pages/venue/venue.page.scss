@@ -1,0 +1,47 @@
+.df-venue-grid {
+  grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr);
+  align-items: start;
+  margin-top: 20px;
+}
+
+.df-map-card {
+  padding: 16px;
+}
+
+.df-map {
+  margin-top: 12px;
+  border: 1px solid var(--df-line);
+  border-radius: 16px;
+  overflow: hidden;
+  background: #060b13;
+}
+
+/* The SVG is injected at runtime, so its inner rules are not scoped. */
+:host ::ng-deep .df-map svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.df-mini {
+  display: flex;
+  gap: 10px;
+  padding: 8px 10px;
+  border: 1px solid var(--df-line);
+  border-radius: 10px;
+  background: var(--df-bg-soft);
+  font-size: 0.8rem;
+  line-height: 1.4;
+}
+
+.df-transport {
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+}
+
+@media (max-width: 860px) {
+  .df-venue-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}

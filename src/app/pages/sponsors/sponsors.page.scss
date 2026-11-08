@@ -1,0 +1,35 @@
+.df-sponsor-card {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 16px;
+}
+
+.df-sponsor-card__mark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 58px;
+  height: 58px;
+  border: 1px solid var(--df-line);
+  border-radius: 16px;
+  background: var(--df-bg-soft);
+  font-family: var(--df-font-mono);
+  font-size: 0.92rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.df-sponsor-card__chevron {
+  color: var(--df-dim);
+}
+
+@media (max-width: 480px) {
+  .df-sponsor-card {
+    grid-template-columns: auto 1fr;
+  }
+
+  .df-sponsor-card__chevron {
+    display: none;
+  }
+}

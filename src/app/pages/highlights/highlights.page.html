@@ -1,0 +1,190 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-title>DevFestCamer</ion-title>
+    <ion-buttons slot="end">
+      <app-year-switcher></app-year-switcher>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class="df-page">
+    <section class="df-hero">
+      <span class="df-eyebrow">{{ c.chapter }} // {{ c.year }}</span>
+      <h1 class="df-hero__theme">{{ c.theme }}</h1>
+      <p class="df-sub">{{ c.tagline }}</p>
+
+      <div class="df-row" style="margin-top: 18px">
+        <span class="df-chip df-chip--accent">
+          <ion-icon name="calendar-outline"></ion-icon>
+          {{ c.dateLabel }}
+        </span>
+        <span class="df-chip">
+          <ion-icon name="location-outline"></ion-icon>
+          {{ c.city }}
+        </span>
+        <span class="df-chip">
+          <ion-icon name="people-outline"></ion-icon>
+          500+ participant·es
+        </span>
+      </div>
+
+      <div class="df-actions">
+        @if (c.links.register) {
+          <a
+            class="df-btn df-btn--primary"
+            [href]="c.links.register"
+            target="_blank"
+            rel="noopener"
+            >
+            <ion-icon name="ticket-outline"></ion-icon>
+            S'inscrire
+          </a>
+        }
+        <a class="df-btn" [routerLink]="['/', c.year, 'agenda']">
+          <ion-icon name="list-outline"></ion-icon>
+          Programme
+        </a>
+        @if (c.links.cfp) {
+          <a
+            class="df-btn df-btn--ghost"
+            [href]="c.links.cfp"
+            target="_blank"
+            rel="noopener"
+            >
+            Proposer un talk
+          </a>
+        }
+      </div>
+    </section>
+
+    @if (c.demo) {
+      <div class="df-notice" style="margin-top: 14px">
+        <strong>Mode démo :</strong> l'annuaire des participant·es et les témoignages
+        sont des exemples à remplacer. Le programme, le lieu et les partenaires
+        reprennent les informations publiques de l'édition.
+      </div>
+    }
+
+    <section class="df-section">
+      <div class="df-grid df-grid--stats">
+        @for (stat of c.stats; track stat) {
+          <div class="df-stat">
+            <span class="df-stat__value">{{ stat.value }}</span>
+            <span class="df-stat__label">{{ stat.label }}</span>
+          </div>
+        }
+      </div>
+    </section>
+
+    <section class="df-section">
+      <span class="df-eyebrow">Pourquoi venir</span>
+      <h2 class="df-title df-title--page">Les temps forts</h2>
+      <div class="df-grid df-grid--2">
+        @for (highlight of c.highlights; track highlight) {
+          <article class="df-card">
+            <div class="df-card__top">
+              <span class="df-avatar">
+                <ion-icon [name]="highlight.icon" style="font-size: 1.2rem"></ion-icon>
+              </span>
+              <div>
+                <span class="df-badge">{{ highlight.tag }}</span>
+                <h3 class="df-card__title" style="margin-top: 8px">{{ highlight.title }}</h3>
+              </div>
+            </div>
+            <p class="df-card__text">{{ highlight.description }}</p>
+          </article>
+        }
+      </div>
+    </section>
+
+    <section class="df-section">
+      <div class="df-spread">
+        <div>
+          <span class="df-eyebrow">À l'affiche</span>
+          <h2 class="df-title df-title--page">Sessions à ne pas manquer</h2>
+        </div>
+        <a class="df-link" [routerLink]="['/', c.year, 'agenda']">
+          Tout le programme
+          <ion-icon name="arrow-forward-outline"></ion-icon>
+        </a>
+      </div>
+
+      <div class="df-list" style="margin-top: 14px">
+        @for (session of featuredSessions; track session) {
+          <a
+            class="df-card df-card--link"
+            [routerLink]="['/', c.year, 'agenda']"
+            >
+            <div class="df-row" style="justify-content: space-between">
+              <span class="df-chip">
+                <span class="df-track-dot" [style.--track]="trackColor(session.trackId)"></span>
+                {{ trackName(session.trackId) }}
+              </span>
+              <span class="df-mono df-dim" style="font-size: 0.72rem">
+                {{ session.start }} — {{ session.end }}
+              </span>
+            </div>
+            <h3 class="df-card__title" style="margin-top: 10px">{{ session.title }}</h3>
+            <p class="df-card__text">{{ session.abstract }}</p>
+            <div class="df-card__meta">
+              <span>{{ roomName(session.roomId) }}</span>
+              <span aria-hidden="true">·</span>
+              <span>{{ session.language }}</span>
+              <span aria-hidden="true">·</span>
+              <span>{{ speakerLine(session.speakerIds) || session.format }}</span>
+            </div>
+          </a>
+        }
+      </div>
+    </section>
+
+    <section class="df-section">
+      <span class="df-eyebrow">Programme</span>
+      <h2 class="df-title df-title--page">5 tracks techniques</h2>
+      <div class="df-row">
+        @for (track of c.tracks; track track) {
+          <a
+            class="df-chip df-chip--button"
+            [routerLink]="['/', c.year, 'agenda']"
+            >
+            <span class="df-track-dot" [style.--track]="track.color"></span>
+            {{ track.name }}
+          </a>
+        }
+      </div>
+    </section>
+
+    <section class="df-section">
+      <span class="df-eyebrow">Communauté</span>
+      <h2 class="df-title df-title--page">Merci aux partenaires</h2>
+      <div class="df-row">
+        @for (sponsor of c.sponsors; track sponsor) {
+          <a
+            class="df-sponsor"
+            [href]="sponsor.url || c.links.site"
+            target="_blank"
+            rel="noopener"
+            >
+            <span class="df-sponsor__mark" [style.color]="sponsor.accent">{{ sponsor.monogram }}</span>
+            <span>{{ sponsor.name }}</span>
+            <small>{{ sponsor.tier }}</small>
+          </a>
+        }
+      </div>
+    </section>
+
+    <footer class="df-footer">
+      <span class="df-mono">DEVFESTCAMER // {{ c.year }}</span>
+      <p class="df-muted">
+        Application compagnon non officielle, construite par la communauté.
+        Les informations de l'édition sont maintenues dans
+        <code>src/assets/data/{{ c.year }}.json</code>.
+      </p>
+      <a class="df-link" [href]="'mailto:' + c.links.contactEmail">
+        <ion-icon name="mail-outline"></ion-icon>
+        {{ c.links.contactEmail }}
+      </a>
+    </footer>
+  </div>
+</ion-content>

@@ -1,0 +1,24 @@
+.df-tools {
+  margin-top: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.df-speaker {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+
+  .df-card__text {
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+}
+
+.df-speaker__head {
+  min-width: 0;
+}

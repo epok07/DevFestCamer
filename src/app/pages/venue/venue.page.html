@@ -1,0 +1,116 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-title>Lieu</ion-title>
+    <ion-buttons slot="end">
+      <app-year-switcher></app-year-switcher>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class="df-page">
+    <span class="df-eyebrow">{{ c.city }} // {{ c.dateLabel }}</span>
+    <h1 class="df-title df-title--page">{{ c.venue.name }}</h1>
+    <p class="df-sub">{{ c.venue.description }}</p>
+
+    <div class="df-grid df-venue-grid">
+      <section class="df-card df-map-card">
+        <div class="df-spread">
+          <span class="df-eyebrow">Plan interactif</span>
+          <span class="df-mono df-dim" style="font-size: 0.66rem">
+            Cliquez sur une salle
+          </span>
+        </div>
+
+        <div
+          class="df-map"
+          [innerHTML]="venueSvg()"
+          (click)="onMapClick($event)"
+          (keydown)="onMapKey($event)"
+        ></div>
+
+        <div class="df-row" style="margin-top: 14px">
+          @for (room of rooms(); track room) {
+            <button
+              class="df-chip df-chip--button"
+              type="button"
+              [class.is-active]="activeRoomId() === room.id"
+              (click)="selectRoom(room.id)"
+              >
+              {{ room.name }}
+            </button>
+          }
+        </div>
+      </section>
+
+      <aside class="df-list">
+        @if (activeRoom(); as room) {
+          <section class="df-card">
+            <span class="df-badge">{{ room.capacity ? room.capacity + ' places' : 'Salle' }}</span>
+            <h2 class="df-card__title" style="margin-top: 10px">{{ room.name }}</h2>
+            <p class="df-card__text">{{ room.description }}</p>
+            @if (activeSessions().length) {
+              <div class="df-list" style="margin-top: 14px">
+                @for (session of activeSessions(); track session) {
+                  <div class="df-mini">
+                    <span class="df-mono df-dim">{{ session.start }}</span>
+                    <span>{{ session.title }}</span>
+                  </div>
+                }
+              </div>
+            }
+            @if (!activeSessions().length) {
+              <p class="df-card__text" style="margin-top: 14px">
+                Aucune session programmée dans cette salle.
+              </p>
+            }
+          </section>
+        }
+
+        <section class="df-card">
+          <span class="df-eyebrow">Adresse</span>
+          <p class="df-card__text" style="margin-top: 10px">{{ c.venue.address }}</p>
+          <p class="df-card__text">{{ c.venue.city }}, Cameroun</p>
+          <div class="df-actions">
+            <a class="df-btn df-btn--primary" [href]="c.venue.mapUrl" target="_blank" rel="noopener">
+              <ion-icon name="navigate-outline"></ion-icon>
+              Itinéraire
+            </a>
+          </div>
+        </section>
+      </aside>
+    </div>
+
+    <section class="df-section">
+      <span class="df-eyebrow">Sur place</span>
+      <h2 class="df-title df-title--page">Protocole d'arrivée</h2>
+      <div class="df-grid df-grid--3" style="margin-top: 14px">
+        @for (step of c.venue.arrival; track step) {
+          <article class="df-card">
+            <span class="df-mono" style="color: var(--df-accent); font-size: 0.72rem">{{ step.step }}</span>
+            <h3 class="df-card__title" style="margin-top: 8px">{{ step.title }}</h3>
+            <p class="df-card__text">{{ step.description }}</p>
+          </article>
+        }
+      </div>
+    </section>
+
+    <section class="df-section">
+      <span class="df-eyebrow">Accès</span>
+      <h2 class="df-title df-title--page">Comment venir</h2>
+      <div class="df-grid df-grid--2" style="margin-top: 14px">
+        @for (item of c.venue.transport; track item) {
+          <article class="df-card df-transport">
+            <span class="df-avatar">
+              <ion-icon [name]="item.icon" style="font-size: 1.2rem"></ion-icon>
+            </span>
+            <div>
+              <h3 class="df-card__title">{{ item.title }}</h3>
+              <p class="df-card__text">{{ item.description }}</p>
+            </div>
+          </article>
+        }
+      </div>
+    </section>
+  </div>
+</ion-content>

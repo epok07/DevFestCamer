@@ -1,0 +1,71 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-title>Témoignages</ion-title>
+    <ion-buttons slot="start">
+      <a class="df-btn df-btn--ghost" [routerLink]="['/', c.year, 'more']">
+        <ion-icon name="arrow-back-outline"></ion-icon>
+        Plus
+      </a>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <app-year-switcher></app-year-switcher>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class="df-page">
+    <span class="df-eyebrow">La communauté en parle</span>
+    <h1 class="df-title df-title--page">Témoignages</h1>
+    <p class="df-sub">
+      Des retours courts, anonymisés lorsque nécessaire, sur ce que les
+      participant·es et intervenant·es retiennent des éditions précédentes.
+    </p>
+
+    @if (c.demo) {
+      <div class="df-notice" style="margin-top: 14px">
+        <strong>Exemples.</strong> Ces témoignages sont fictifs et servent de
+        gabarit. Remplacez-les par des citations réelles, avec l’accord des
+        personnes citées.
+      </div>
+    }
+
+    <div class="df-grid df-grid--2" style="margin-top: 20px">
+      @for (item of testimonials(); track item) {
+        <blockquote class="df-quote">
+          <span class="df-badge">{{ item.edition }}</span>
+          <p>{{ item.quote }}</p>
+          <footer class="df-quote__by">
+            <span class="df-avatar">{{ item.name | initials }}</span>
+            <span>
+              <strong>{{ item.name }}</strong>
+              <small>
+                {{ item.role }}@if (item.company) {
+                · {{ item.company }}
+              }
+            </small>
+          </span>
+        </footer>
+      </blockquote>
+    }
+  </div>
+
+  <section class="df-section">
+    <span class="df-eyebrow">Votre avis</span>
+    <h2 class="df-title df-title--page">Un retour à partager ?</h2>
+    <p class="df-sub">
+      Après l’événement, envoyez votre témoignage à l’équipe. Les retours
+      constructifs aident à préparer l’édition suivante.
+    </p>
+    <div class="df-actions">
+      <a
+        class="df-btn df-btn--primary"
+        [href]="'mailto:' + c.links.contactEmail + '?subject=T%C3%A9moignage%20DevFest%20' + c.year"
+        >
+        <ion-icon name="mail-outline"></ion-icon>
+        Envoyer un témoignage
+      </a>
+    </div>
+  </section>
+</div>
+</ion-content>

@@ -1,0 +1,16 @@
+:host {
+  display: flex;
+  align-items: center;
+}
+
+.year-select {
+  --padding-start: 8px;
+  --padding-end: 8px;
+  font-family: var(--df-font-mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  color: var(--df-accent);
+  border: 1px solid var(--df-line);
+  border-radius: 999px;
+  min-height: 30px;
+}

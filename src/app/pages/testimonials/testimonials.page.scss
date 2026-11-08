@@ -1,0 +1,32 @@
+.df-quote {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.df-quote p {
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.65;
+}
+
+.df-quote footer {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: auto;
+  padding-top: 12px;
+  border-top: 1px solid var(--df-line);
+}
+
+.df-quote footer strong {
+  display: block;
+  font-size: 0.86rem;
+}
+
+.df-quote footer small {
+  display: block;
+  color: var(--df-dim);
+  font-size: 0.74rem;
+}

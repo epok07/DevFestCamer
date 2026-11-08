@@ -1,0 +1,631 @@
+{
+  "year": 2026,
+  "name": "DevFest Douala 2026",
+  "chapter": "GDG Douala",
+  "city": "Douala",
+  "theme": "Stand Alone Complex",
+  "tagline": "Des systèmes autonomes, une communauté qui fait réseau.",
+  "manifesto": "Le DevFest Douala 2026 explore une idée simple : des équipes, des outils et des services qui fonctionnent de manière autonome, mais qui choisissent d'interopérer. Pas de chef d'orchestre unique — des standards, des contrats clairs et une communauté qui partage ce qu'elle apprend. Une journée pour parler de production réelle, de performance sur réseaux contraints et de souveraineté technique.",
+  "date": "2026-11-28",
+  "dateLabel": "Samedi 28 novembre 2026",
+  "startTime": "07:00",
+  "endTime": "18:00",
+  "demo": true,
+  "stats": [
+    { "value": "500+", "label": "participants attendus" },
+    { "value": "30", "label": "sessions et ateliers" },
+    { "value": "5", "label": "tracks techniques" },
+    { "value": "3", "label": "salles en parallèle" },
+    { "value": "10+", "label": "pays représentés" },
+    { "value": "1", "label": "journée d'immersion" }
+  ],
+  "highlights": [
+    {
+      "icon": "git-network-outline",
+      "tag": "THÈME 2026",
+      "title": "Stand Alone Complex",
+      "description": "Des systèmes distribués qui coopèrent sans dépendance centralisée : architecture, protocoles et culture d'ingénierie."
+    },
+    {
+      "icon": "people-outline",
+      "tag": "COMMUNAUTÉ",
+      "title": "500+ développeurs",
+      "description": "Étudiants, ingénieurs, designers et fondateurs réunis à Douala pour une journée de partage sans vitrine marketing."
+    },
+    {
+      "icon": "layers-outline",
+      "tag": "PROGRAMME",
+      "title": "5 tracks, 3 salles",
+      "description": "Platform, Web, AI, Mobile et Security — des talks, retours d'expérience et ateliers pratiques en parallèle."
+    },
+    {
+      "icon": "trophy-outline",
+      "tag": "CHALLENGE",
+      "title": "Demo Day",
+      "description": "Les projets retenus du Challenge DevFest défendent leur prototype devant la communauté et un jury."
+    },
+    {
+      "icon": "location-outline",
+      "tag": "LIEU",
+      "title": "JFN Hightech",
+      "description": "Campus de Bonamoussadi – Santa Barbara : amphithéâtre, studio et lab, pensés pour une journée dense."
+    },
+    {
+      "icon": "cloud-offline-outline",
+      "tag": "ENGAGEMENT",
+      "title": "Pensé pour la 3G",
+      "description": "Une app companion légère, utilisable hors-ligne et sur les appareils Android d'entrée de gamme."
+    }
+  ],
+  "tracks": [
+    { "id": "platform", "name": "Platform", "color": "#7aa2ff", "description": "Architecture, cloud, observabilité et résilience." },
+    { "id": "web", "name": "Web", "color": "#5cf2c4", "description": "Performance, accessibilité et standards du web." },
+    { "id": "ai", "name": "AI", "color": "#ffcc66", "description": "Agents, modèles et usages responsables de l'IA." },
+    { "id": "mobile", "name": "Mobile", "color": "#34a853", "description": "Android, sobriété data et expériences hors-ligne." },
+    { "id": "security", "name": "Security", "color": "#ff6b8a", "description": "Sécurité des API, données et souveraineté." },
+    { "id": "plenary", "name": "Plénière", "color": "#9aa7b8", "description": "Cérémonies, pauses et temps forts communs." }
+  ],
+  "days": [
+    {
+      "date": "2026-11-28",
+      "label": "Journée unique",
+      "sessions": [
+        {
+          "id": "accueil",
+          "title": "Accueil, badges & petit-déjeuner",
+          "abstract": "Retrait du badge, orientation dans le campus et premier café avec la communauté.",
+          "start": "07:00",
+          "end": "08:30",
+          "trackId": "plenary",
+          "roomId": "accueil",
+          "level": "Tous",
+          "language": "FR",
+          "format": "Accueil",
+          "speakerIds": []
+        },
+        {
+          "id": "ouverture",
+          "title": "Ouverture officielle",
+          "abstract": "Mot du chapitre GDG Douala, présentation du thème Stand Alone Complex et des temps forts de la journée.",
+          "start": "08:30",
+          "end": "09:00",
+          "trackId": "plenary",
+          "roomId": "main",
+          "level": "Tous",
+          "language": "FR",
+          "format": "Cérémonie",
+          "speakerIds": []
+        },
+        {
+          "id": "architecture-resiliente",
+          "title": "Architecture résiliente et observabilité sous contraintes",
+          "abstract": "Retour d'expérience sur des API critiques en production : disponibilité, télémétrie utile et dégradation contrôlée quand le réseau, les ressources et le temps manquent.",
+          "start": "09:00",
+          "end": "09:40",
+          "trackId": "platform",
+          "roomId": "main",
+          "level": "Intermédiaire",
+          "language": "FR",
+          "format": "Talk",
+          "speakerIds": ["amine-kouassi"]
+        },
+        {
+          "id": "design-system-section-9",
+          "title": "Design System Section 9 : performance et accessibilité native",
+          "abstract": "Construire un système de design sans dépendance lourde, conforme WCAG 2.1 AA et compatible avec le rendu côté serveur Angular.",
+          "start": "10:15",
+          "end": "10:55",
+          "trackId": "web",
+          "roomId": "studio",
+          "level": "Avancé",
+          "language": "FR",
+          "format": "Talk",
+          "speakerIds": ["mireille-douala"]
+        },
+        {
+          "id": "agentic-ai",
+          "title": "Agentic AI : autonomie, supervision et réalités du terrain",
+          "abstract": "Au-delà des démos : où les agents LLM apportent vraiment de la valeur, comment les superviser et quelles limites assumer dans un workflow de développement réel.",
+          "start": "11:30",
+          "end": "12:10",
+          "trackId": "ai",
+          "roomId": "lab",
+          "level": "Débutant",
+          "language": "EN",
+          "format": "Talk",
+          "speakerIds": ["mina-efoa"]
+        },
+        {
+          "id": "lunch",
+          "title": "Déjeuner, stands & démos",
+          "abstract": "Pause déjeuner, visite des stands partenaires et démonstrations libres sur l'espace expo.",
+          "start": "12:10",
+          "end": "14:00",
+          "trackId": "plenary",
+          "roomId": "expo",
+          "level": "Tous",
+          "language": "FR",
+          "format": "Pause",
+          "speakerIds": []
+        },
+        {
+          "id": "android-3g",
+          "title": "Applications Android d'entrée de gamme en 3G : sobriété data",
+          "abstract": "Stratégies concrètes pour réduire la consommation réseau, mettre en cache agressivement et synchroniser en arrière-plan sur des appareils Android modestes.",
+          "start": "14:00",
+          "end": "14:40",
+          "trackId": "mobile",
+          "roomId": "main",
+          "level": "Intermédiaire",
+          "language": "FR",
+          "format": "Talk",
+          "speakerIds": ["samuel-nkodo"]
+        },
+        {
+          "id": "api-security",
+          "title": "Sécurité des API et souveraineté des données locales",
+          "abstract": "Menaces émergentes, conception d'API défensive et choix d'infrastructure pour garder la maîtrise des données utilisateurs.",
+          "start": "15:15",
+          "end": "15:55",
+          "trackId": "security",
+          "roomId": "studio",
+          "level": "Avancé",
+          "language": "FR",
+          "format": "Talk",
+          "speakerIds": ["amine-kouassi"]
+        },
+        {
+          "id": "webassembly",
+          "title": "WebAssembly : exécuter du code natif dans le navigateur",
+          "abstract": "Porter des traitements lourds C++/Rust côté client sans sacrifier la réactivité : cas d'usage, limites et mesure de l'apport réel.",
+          "start": "16:30",
+          "end": "17:10",
+          "trackId": "web",
+          "roomId": "lab",
+          "level": "Intermédiaire",
+          "language": "EN",
+          "format": "Talk",
+          "speakerIds": ["mireille-douala"]
+        },
+        {
+          "id": "demo-day",
+          "title": "Challenge DevFest — Demo Day",
+          "abstract": "Les équipes finalistes présentent leur prototype au jury et à la communauté. Questions, feedback et délibération en direct.",
+          "start": "17:10",
+          "end": "17:40",
+          "trackId": "plenary",
+          "roomId": "main",
+          "level": "Tous",
+          "language": "FR",
+          "format": "Compétition",
+          "speakerIds": []
+        },
+        {
+          "id": "cloture",
+          "title": "Clôture & tirage au sort",
+          "abstract": "Remerciements aux partenaires et bénévoles, annonce des gagnants du challenge et tirage au sort.",
+          "start": "17:40",
+          "end": "18:00",
+          "trackId": "plenary",
+          "roomId": "main",
+          "level": "Tous",
+          "language": "FR",
+          "format": "Cérémonie",
+          "speakerIds": []
+        }
+      ]
+    }
+  ],
+  "speakers": [
+    {
+      "id": "amine-kouassi",
+      "name": "Amine Kouassi",
+      "role": "Architecte produit",
+      "company": "Kouassi Systems & Cloud",
+      "trackId": "platform",
+      "featured": true,
+      "bio": "Amine conçoit des plateformes critiques avec une obsession pour l'observabilité et les modes de défaillance. Il intervient régulièrement sur les architectures cloud-native et les stratégies de résilience adaptées aux contextes où la bande passante est un luxe.",
+      "links": [
+        { "label": "Profil DevFest", "url": "https://devfest.gdgdouala.org/speakers/amine-kouassi", "icon": "globe-outline" }
+      ]
+    },
+    {
+      "id": "mireille-douala",
+      "name": "Mireille Douala",
+      "role": "Lead frontend",
+      "company": "Douala Tech Lab",
+      "trackId": "web",
+      "featured": true,
+      "bio": "Mireille travaille les interfaces comme des produits d'infrastructure : performance mesurée, accessibilité vérifiée et zéro dépendance inutile. Elle partage ses retours sur les design systems et le rendu serveur en conditions réelles.",
+      "links": [
+        { "label": "Profil DevFest", "url": "https://devfest.gdgdouala.org/speakers/mireille-douala", "icon": "globe-outline" }
+      ]
+    },
+    {
+      "id": "mina-efoa",
+      "name": "Mina Efoa",
+      "role": "Chercheuse en IA",
+      "company": "AfriAI Research",
+      "trackId": "ai",
+      "featured": true,
+      "bio": "Mina explore les agents autonomes et leurs limites pragmatiques. Ses travaux portent sur la supervision, l'évaluation et l'intégration responsable des modèles dans des outils utilisés par des équipes non spécialistes.",
+      "links": [
+        { "label": "Profil DevFest", "url": "https://devfest.gdgdouala.org/speakers/mina-efoa", "icon": "globe-outline" }
+      ]
+    },
+    {
+      "id": "samuel-nkodo",
+      "name": "Samuel Nkodo",
+      "role": "Ingénieur Mobile Android",
+      "company": "Cameroon Mobile Labs",
+      "trackId": "mobile",
+      "featured": true,
+      "bio": "Samuel construit des applications Android pour des marchés où la 3G et les appareils modestes sont la norme. Il défend une ingénierie mobile sobre : moins de données, plus de résilience, et des comportements prévisibles hors-ligne.",
+      "links": [
+        { "label": "Profil DevFest", "url": "https://devfest.gdgdouala.org/speakers/samuel-nkodo", "icon": "globe-outline" }
+      ]
+    }
+  ],
+  "venue": {
+    "name": "JFN Hightech University Institute",
+    "address": "Campus Universitaire Santa Barbara, Bonamoussadi (Douala 5e). Repère : Carrefour Santa Barbara.",
+    "city": "Douala",
+    "description": "Un campus moderne à Bonamoussadi – Santa Barbara, avec un amphithéâtre principal, un studio et un lab. Trois espaces en parallèle, un espace partenaires et un food court pour garder la journée fluide.",
+    "mapUrl": "https://www.google.com/maps/search/?api=1&query=JFN+Hightech+University+Institute+Bonamoussadi+Douala",
+    "svg": "assets/img/venue-2026.svg",
+    "rooms": [
+      { "id": "main", "name": "Grand Amphithéâtre", "capacity": 300, "description": "Talks pléniers, cérémonies et Demo Day. Le cœur de la journée." },
+      { "id": "studio", "name": "Studio", "capacity": 120, "description": "Sessions Web et Security, format talk avec questions." },
+      { "id": "lab", "name": "Tech Lab", "capacity": 60, "description": "AI et WebAssembly, ateliers pratiques et démos." },
+      { "id": "expo", "name": "Espace partenaires", "capacity": 150, "description": "Stands sponsors, démos, networking et pause déjeuner." },
+      { "id": "accueil", "name": "Accueil & badge", "capacity": 80, "description": "Retrait des badges, orientation et point info." },
+      { "id": "food", "name": "Food court", "capacity": 120, "description": "Café, pauses et déjeuner. Accès libre toute la journée." }
+    ],
+    "arrival": [
+      { "step": "01", "title": "Arriver", "description": "Présentez-vous au campus JFN, entrée Bonamoussadi – Santa Barbara." },
+      { "step": "02", "title": "S'inscrire", "description": "Ayez votre QR code d'inscription prêt (email ou application GDG)." },
+      { "step": "03", "title": "Scanner", "description": "Le badge est scanné à l'accueil pour confirmer votre présence." },
+      { "step": "04", "title": "Entrer", "description": "Récupérez votre badge, le programme et rejoignez l'amphithéâtre." }
+    ],
+    "transport": [
+      { "icon": "car-outline", "title": "Taxi", "description": "Demandez « JFN University Institute » ou « Carrefour Santa Barbara », Bonamoussadi." },
+      { "icon": "bicycle-outline", "title": "Moto-taxi", "description": "Rapide et économique dans Douala ; confirmez le prix avant de partir." },
+      { "icon": "bus-outline", "title": "Transport en commun", "description": "Plusieurs lignes desservent Bonamoussadi. Vérifiez l'itinéraire du jour." },
+      { "icon": "navigate-outline", "title": "Stationnement", "description": "Des places sont disponibles à proximité immédiate du campus." }
+    ]
+  },
+  "materials": [
+    {
+      "id": "guide-participant",
+      "title": "Guide du participant",
+      "description": "Ce qu'il faut savoir avant d'arriver : accès, badges, programme, wifi et bonnes pratiques.",
+      "type": "Document",
+      "size": "4 Ko",
+      "url": "assets/materials/guide-participant.md",
+      "available": true
+    },
+    {
+      "id": "code-de-conduite",
+      "title": "Code de conduite",
+      "description": "Les règles de la communauté GDG Douala pour un événement sûr et inclusif.",
+      "type": "Document",
+      "size": "3 Ko",
+      "url": "assets/materials/code-de-conduite.md",
+      "available": true
+    },
+    {
+      "id": "kit-presse",
+      "title": "Kit presse & médias",
+      "description": "Logos, visuels, citations et informations pratiques pour couvrir l'événement.",
+      "type": "Archive",
+      "size": "5 Ko",
+      "url": "assets/materials/kit-presse.md",
+      "available": true
+    },
+    {
+      "id": "dossier-sponsoring",
+      "title": "Dossier de sponsoring",
+      "description": "Formats de partenariat, audience et engagements pour soutenir l'édition 2026.",
+      "type": "Lien",
+      "url": "https://docs.google.com/presentation/d/1-8O2-l2gbWu5vyyL3M2ONRRXDJsiy9YCLgLSu9khlVQ/edit?usp=sharing",
+      "available": true
+    },
+    {
+      "id": "challenge",
+      "title": "Challenge DevFest — formulaire",
+      "description": "Soumettre un projet pour le Demo Day et consulter les thématiques proposées.",
+      "type": "Lien",
+      "url": "https://forms.gle/noNbWQKNPDKua6Vg7",
+      "available": true
+    },
+    {
+      "id": "slides",
+      "title": "Slides des sessions",
+      "description": "Les supports des intervenant·es seront publiés après l'événement, avec leur accord.",
+      "type": "Slides",
+      "available": false
+    },
+    {
+      "id": "photos",
+      "title": "Photos officielles",
+      "description": "La galerie de l'édition 2026 sera partagée après le DevFest.",
+      "type": "Archive",
+      "available": false
+    },
+    {
+      "id": "depots",
+      "title": "Dépôts & ressources",
+      "description": "Les projets open source et ressources partagés par la communauté GDG Douala.",
+      "type": "Code",
+      "url": "https://github.com/gdg-douala",
+      "available": true
+    }
+  ],
+  "participants": [
+    {
+      "id": "awa-ngono",
+      "name": "Awa Ngono",
+      "role": "Frontend Engineer",
+      "company": "Studio Kola",
+      "bio": "Je construis des interfaces accessibles et rapides. Je cherche des personnes qui aiment autant les design systems que les tests e2e.",
+      "tags": ["Frontend", "Angular", "Accessibilité"],
+      "links": [
+        { "label": "LinkedIn", "url": "https://example.com/awa-ngono/linkedin", "icon": "logo-linkedin" },
+        { "label": "GitHub", "url": "https://example.com/awa-ngono/github", "icon": "logo-github" }
+      ]
+    },
+    {
+      "id": "boris-tchoumi",
+      "name": "Boris Tchoumi",
+      "role": "Mobile Android Engineer",
+      "company": "Mboa Apps",
+      "bio": "Android, Kotlin et applications qui survivent à la 3G. Je partage des retours sur le mode hors-ligne et la sobriété data.",
+      "tags": ["Mobile", "Kotlin", "Offline"],
+      "links": [
+        { "label": "LinkedIn", "url": "https://example.com/boris-tchoumi/linkedin", "icon": "logo-linkedin" },
+        { "label": "GitHub", "url": "https://example.com/boris-tchoumi/github", "icon": "logo-github" }
+      ]
+    },
+    {
+      "id": "chantal-mballa",
+      "name": "Chantal Mballa",
+      "role": "Product Designer",
+      "company": "Douala Design Club",
+      "bio": "Design produit, recherche utilisateur et prototypes testés sur le terrain. J'anime aussi des ateliers de critique design.",
+      "tags": ["Design", "UX", "Recherche"],
+      "links": [
+        { "label": "Portfolio", "url": "https://example.com/chantal-mballa", "icon": "globe-outline" },
+        { "label": "LinkedIn", "url": "https://example.com/chantal-mballa/linkedin", "icon": "logo-linkedin" }
+      ]
+    },
+    {
+      "id": "didier-fotso",
+      "name": "Didier Fotso",
+      "role": "Machine Learning Engineer",
+      "company": "AfriAI Research",
+      "bio": "Je travaille sur l'évaluation de modèles et les pipelines de données en environnement contraint. Python, MLOps et beaucoup de café.",
+      "tags": ["AI", "Python", "MLOps"],
+      "links": [
+        { "label": "GitHub", "url": "https://example.com/didier-fotso/github", "icon": "logo-github" },
+        { "label": "LinkedIn", "url": "https://example.com/didier-fotso/linkedin", "icon": "logo-linkedin" }
+      ]
+    },
+    {
+      "id": "estelle-ngo-bassong",
+      "name": "Estelle Ngo Bassong",
+      "role": "DevOps Engineer",
+      "company": "Cloud Mboa",
+      "bio": "Kubernetes, Terraform et observabilité. Mon objectif : rendre les déploiements ennuyeux, donc fiables.",
+      "tags": ["Platform", "Kubernetes", "Cloud"],
+      "links": [
+        { "label": "GitHub", "url": "https://example.com/estelle-ngo/github", "icon": "logo-github" },
+        { "label": "Site", "url": "https://example.com/estelle-ngo", "icon": "globe-outline" }
+      ]
+    },
+    {
+      "id": "franck-etoundi",
+      "name": "Franck Etoundi",
+      "role": "Security Engineer",
+      "company": "Independent",
+      "bio": "Pentest, sécurité des API et sensibilisation. Je crois qu'une bonne documentation de sécurité vaut mieux qu'un slide de peur.",
+      "tags": ["Security", "API", "Pentest"],
+      "links": [
+        { "label": "LinkedIn", "url": "https://example.com/franck-etoundi/linkedin", "icon": "logo-linkedin" },
+        { "label": "Blog", "url": "https://example.com/franck-etoundi", "icon": "globe-outline" }
+      ]
+    },
+    {
+      "id": "ghislaine-mbarga",
+      "name": "Ghislaine Mbarga",
+      "role": "Community Manager",
+      "company": "GDG Douala",
+      "bio": "Je fais vivre la communauté au quotidien : événements, bénévoles et partenariats. Venez me parler si vous voulez organiser quelque chose.",
+      "tags": ["Communauté", "Événements"],
+      "links": [
+        { "label": "LinkedIn", "url": "https://example.com/ghislaine-mbarga/linkedin", "icon": "logo-linkedin" },
+        { "label": "X", "url": "https://example.com/ghislaine-mbarga/x", "icon": "globe-outline" }
+      ]
+    },
+    {
+      "id": "herve-kamdem",
+      "name": "Hervé Kamdem",
+      "role": "Fullstack Developer",
+      "company": "Buea Web Guild",
+      "bio": "Node, TypeScript et produits web. J'aime les architectures simples, les tests et les migrations de bases de données sans drame.",
+      "tags": ["Web", "Node", "TypeScript"],
+      "links": [
+        { "label": "GitHub", "url": "https://example.com/herve-kamdem/github", "icon": "logo-github" },
+        { "label": "LinkedIn", "url": "https://example.com/herve-kamdem/linkedin", "icon": "logo-linkedin" }
+      ]
+    },
+    {
+      "id": "ines-tchana",
+      "name": "Ines Tchana",
+      "role": "AI Researcher",
+      "company": "AfriAI Research",
+      "bio": "Je m'intéresse aux agents, à l'évaluation et aux usages de l'IA en éducation. Toujours partante pour une discussion sur les benchmarks.",
+      "tags": ["AI", "Recherche", "Éducation"],
+      "links": [
+        { "label": "LinkedIn", "url": "https://example.com/ines-tchana/linkedin", "icon": "logo-linkedin" },
+        { "label": "Publications", "url": "https://example.com/ines-tchana", "icon": "globe-outline" }
+      ]
+    },
+    {
+      "id": "joel-nkoulou",
+      "name": "Joel Nkoulou",
+      "role": "Étudiant & QA",
+      "company": "Université de Douala",
+      "bio": "En fin de cycle, je découvre le test logiciel et l'automatisation. Je cherche un mentor et des projets open source où contribuer.",
+      "tags": ["Étudiant", "QA", "Open Source"],
+      "links": [
+        { "label": "GitHub", "url": "https://example.com/joel-nkoulou/github", "icon": "logo-github" },
+        { "label": "LinkedIn", "url": "https://example.com/joel-nkoulou/linkedin", "icon": "logo-linkedin" }
+      ]
+    },
+    {
+      "id": "karen-abena",
+      "name": "Karen Abena",
+      "role": "UX Writer",
+      "company": "Independent",
+      "bio": "J'écris pour les interfaces : clarté, ton et accessibilité. Je m'intéresse aussi à la documentation comme produit.",
+      "tags": ["Design", "Contenu", "Accessibilité"],
+      "links": [
+        { "label": "Portfolio", "url": "https://example.com/karen-abena", "icon": "globe-outline" },
+        { "label": "LinkedIn", "url": "https://example.com/karen-abena/linkedin", "icon": "logo-linkedin" }
+      ]
+    },
+    {
+      "id": "lionel-nana",
+      "name": "Lionel Nana",
+      "role": "Cloud Consultant",
+      "company": "Nana Cloud",
+      "bio": "J'accompagne des équipes sur leurs fondations cloud et leur facture. FinOps, IaC et architectures pragmatiques.",
+      "tags": ["Platform", "FinOps", "Cloud"],
+      "links": [
+        { "label": "LinkedIn", "url": "https://example.com/lionel-nana/linkedin", "icon": "logo-linkedin" },
+        { "label": "Blog", "url": "https://example.com/lionel-nana", "icon": "globe-outline" }
+      ]
+    }
+  ],
+  "sponsors": [
+    {
+      "id": "google",
+      "name": "Google",
+      "tier": "Platine",
+      "description": "Partenaire principal du DevFest et de la communauté GDG mondiale.",
+      "url": "https://about.google",
+      "monogram": "G",
+      "accent": "#4285f4"
+    },
+    {
+      "id": "genuka",
+      "name": "Genuka",
+      "tier": "Argent",
+      "description": "Plateforme de gestion commerciale, facturation et e-commerce pour les entreprises africaines.",
+      "url": "https://genuka.com",
+      "monogram": "GE",
+      "accent": "#5cf2c4"
+    },
+    {
+      "id": "neero",
+      "name": "Neero",
+      "tier": "Argent",
+      "description": "Super-app financière africaine : comptes multi-devises, cartes virtuelles et Mobile Money.",
+      "url": "https://neero.io",
+      "monogram": "NE",
+      "accent": "#7aa2ff"
+    },
+    {
+      "id": "suprapay",
+      "name": "SupraPay",
+      "tier": "Argent",
+      "description": "Infrastructure de paiement pour créateurs et indépendants africains.",
+      "url": "https://suprapay.io",
+      "monogram": "SP",
+      "accent": "#ffcc66"
+    },
+    {
+      "id": "idem",
+      "name": "IDEM",
+      "tier": "Argent",
+      "description": "Plateforme souveraine d'IA et d'outils de création d'applications pour l'entrepreneuriat africain.",
+      "url": "https://idem.africa",
+      "monogram": "ID",
+      "accent": "#ff6b8a"
+    },
+    {
+      "id": "wajub",
+      "name": "Wajub",
+      "tier": "Argent",
+      "description": "API d'orchestration de paiements multi-opérateurs et Mobile Money pour l'Afrique.",
+      "url": "https://wajub.com",
+      "monogram": "WA",
+      "accent": "#34a853"
+    },
+    {
+      "id": "gdg-douala",
+      "name": "GDG Douala",
+      "tier": "Communauté",
+      "description": "Communauté Google Developer Group de Douala, organisatrice bénévole de l'événement.",
+      "url": "https://gdgdouala.org",
+      "monogram": "GDG",
+      "accent": "#ea4335"
+    }
+  ],
+  "testimonials": [
+    {
+      "id": "t1",
+      "quote": "Une journée dense mais vraiment utile : des retours de production, pas des slides marketing. J'ai reparti avec trois idées à tester dans la semaine.",
+      "name": "Participant·e",
+      "role": "Développeur·se backend",
+      "edition": "Édition 2025"
+    },
+    {
+      "id": "t2",
+      "quote": "Les ateliers en petit comité sont le vrai plus. On pose des questions, on manipule, on repart avec un exemple qui tourne.",
+      "name": "Bénévole",
+      "role": "Étudiant·e en informatique",
+      "edition": "Édition 2025"
+    },
+    {
+      "id": "t3",
+      "quote": "Le niveau des discussions après les talks m'a surpris. La communauté de Douala est exigeante et généreuse à la fois.",
+      "name": "Intervenant·e",
+      "role": "Ingénieur·e platform",
+      "edition": "Édition 2025"
+    },
+    {
+      "id": "t4",
+      "quote": "Le challenge m'a donné un prétexte pour finir un prototype. Le Demo Day est un bon format : court, concret, avec du feedback immédiat.",
+      "name": "Étudiant·e",
+      "role": "Participant·e au challenge",
+      "edition": "Édition 2025"
+    }
+  ],
+  "team": [
+    { "id": "andy-tchouta", "name": "Andy Tchouta", "role": "Software Engineer", "focus": "Frontend, UX et expérience participant", "email": "contact@gdgdouala.org", "links": [{ "label": "LinkedIn", "url": "https://cm.linkedin.com/in/at-dev10", "icon": "logo-linkedin" }] },
+    { "id": "konwo-lorentz", "name": "Konwo Lorentz", "role": "Product Designer", "focus": "Identité visuelle et supports", "email": "contact@gdgdouala.org", "links": [] },
+    { "id": "junior-kamla", "name": "Junior Kamla", "role": "Software Engineer", "focus": "Application companion et outils internes", "email": "contact@gdgdouala.org", "links": [] },
+    { "id": "raissa-mandeng", "name": "Raissa Mandeng", "role": "WomenTech Lead", "focus": "Inclusion, WomenTechmakers et mentorat", "email": "contact@gdgdouala.org", "links": [] },
+    { "id": "fadimatou-leila", "name": "Fadimatou Leila", "role": "WordPress Developer", "focus": "Site web et contenu", "email": "contact@gdgdouala.org", "links": [] },
+    { "id": "fergany-biloa", "name": "Fergany Biloa", "role": "GDG Organizer", "focus": "Coordination générale et partenariats", "email": "contact@gdgdouala.org", "links": [] },
+    { "id": "arolle-aguekeng", "name": "Arolle Aguekeng", "role": "Software Engineer", "focus": "Logistique technique et bénévoles", "email": "contact@gdgdouala.org", "links": [] },
+    { "id": "ndoh-yannick-tang", "name": "Ndoh Yannick Tang", "role": "Software Developer", "focus": "Programme et intervenant·es", "email": "contact@gdgdouala.org", "links": [] },
+    { "id": "curtis-elvira", "name": "Curtis Elvira", "role": "Software Engineer", "focus": "Expérience sur site et signalétique", "email": "contact@gdgdouala.org", "links": [] },
+    { "id": "nlend-max", "name": "Nlend Max", "role": "Software Developer", "focus": "Communication et réseaux sociaux", "email": "contact@gdgdouala.org", "links": [] }
+  ],
+  "links": {
+    "site": "https://devfest.gdgdouala.org",
+    "register": "https://gdg.community.dev/events/details/google-gdg-douala-presents-devfest-douala-2026-creer-securiser-faire-evoluer-les-developpeurs-et-les-createurs-a-lere-agentique/",
+    "cfp": "https://devfest.gdgdouala.org/cfp",
+    "challenge": "https://forms.gle/noNbWQKNPDKua6Vg7",
+    "codeOfConduct": "https://devfest.gdgdouala.org/code-de-conduite",
+    "contactEmail": "contact@gdgdouala.org",
+    "socials": [
+      { "label": "X", "url": "https://x.com/gdgdouala", "icon": "globe-outline" },
+      { "label": "LinkedIn", "url": "https://www.linkedin.com/company/gdg-douala", "icon": "logo-linkedin" },
+      { "label": "YouTube", "url": "https://www.youtube.com/@gdgdouala", "icon": "logo-youtube" },
+      { "label": "GitHub", "url": "https://github.com/gdg-douala", "icon": "logo-github" }
+    ]
+  }
+}

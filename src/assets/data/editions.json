@@ -1,0 +1,22 @@
+[
+  {
+    "year": 2026,
+    "name": "DevFest Douala 2026",
+    "city": "Douala",
+    "theme": "Stand Alone Complex",
+    "date": "2026-11-28",
+    "dateLabel": "Samedi 28 novembre 2026",
+    "status": "upcoming",
+    "tagline": "Des systèmes autonomes, une communauté qui fait réseau."
+  },
+  {
+    "year": 2027,
+    "name": "DevFest Cameroun 2027",
+    "city": "À définir",
+    "theme": "À définir",
+    "date": "",
+    "dateLabel": "Date à annoncer",
+    "status": "planned",
+    "tagline": "La prochaine édition se prépare."
+  }
+]

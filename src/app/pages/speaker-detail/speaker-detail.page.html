@@ -1,0 +1,102 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-title>Profil</ion-title>
+    <ion-buttons slot="start">
+      <a class="df-btn df-btn--ghost" [routerLink]="['/', c.year, 'speakers']">
+        <ion-icon name="arrow-back-outline"></ion-icon>
+        Speakers
+      </a>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <app-year-switcher></app-year-switcher>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class="df-page df-page--narrow">
+    @if (speaker(); as s) {
+      <section class="df-card df-profile">
+        <div class="df-card__top">
+          <span class="df-avatar df-avatar--lg">{{ s.name | initials }}</span>
+          <div>
+            @if (s.trackId) {
+              <span
+                class="df-badge"
+                [style.color]="trackColor(s.trackId)"
+                >
+                {{ trackName(s.trackId) }}
+              </span>
+            }
+            <h1 class="df-title df-title--page" style="margin: 8px 0 4px">{{ s.name }}</h1>
+            <p class="df-muted" style="margin: 0">
+              {{ s.role }}@if (s.company) {
+              · {{ s.company }}
+            }
+          </p>
+        </div>
+      </div>
+
+      <p class="df-sub" style="margin-top: 18px">{{ s.bio }}</p>
+
+      @if (s.links.length) {
+        <div class="df-actions">
+          @for (link of s.links; track link) {
+            <a
+              class="df-btn"
+              [href]="link.url"
+              target="_blank"
+              rel="noopener"
+              >
+              <ion-icon [name]="link.icon || 'link-outline'"></ion-icon>
+              {{ link.label }}
+            </a>
+          }
+        </div>
+      }
+    </section>
+
+    <section class="df-section">
+      <span class="df-eyebrow">Au programme</span>
+      <h2 class="df-title df-title--page">Ses sessions</h2>
+
+      @if (sessions().length) {
+        <div class="df-list">
+          @for (session of sessions(); track session) {
+            <a
+              class="df-card df-card--link"
+              [routerLink]="['/', c.year, 'agenda']"
+              >
+              <div class="df-row" style="justify-content: space-between">
+                <span class="df-chip">
+                  <span class="df-track-dot" [style.--track]="trackColor(session.trackId)"></span>
+                  {{ trackName(session.trackId) }}
+                </span>
+                <span class="df-mono df-dim" style="font-size: 0.72rem">
+                  {{ session.start }} — {{ session.end }}
+                </span>
+              </div>
+              <h3 class="df-card__title" style="margin-top: 10px">{{ session.title }}</h3>
+              <div class="df-card__meta">
+                <span>{{ roomName(session.roomId) }}</span>
+                <span aria-hidden="true">·</span>
+                <span>{{ session.language }}</span>
+                <span aria-hidden="true">·</span>
+                <span>{{ session.level }}</span>
+              </div>
+            </a>
+          }
+        </div>
+      } @else {
+        <div class="df-empty">Le programme de cette personne sera publié prochainement.</div>
+      }
+
+    </section>
+  } @else {
+    <div class="df-empty">
+      Profil introuvable pour cette édition.
+      <a [routerLink]="['/', c.year, 'speakers']">Retour à la liste</a>
+    </div>
+  }
+</div>
+</ion-content>

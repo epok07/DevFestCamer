@@ -1,0 +1,16 @@
+<ion-select
+  class="year-select"
+  interface="popover"
+  [value]="conference.currentYear"
+  (ionChange)="change($event.detail.value)"
+  aria-label="Choisir l'édition"
+  >
+  @for (edition of editions(); track edition) {
+    <ion-select-option
+      [value]="edition.year"
+      [disabled]="edition.status === 'planned'"
+      >
+      {{ label(edition) }}
+    </ion-select-option>
+  }
+</ion-select>

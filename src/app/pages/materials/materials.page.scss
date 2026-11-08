@@ -1,0 +1,13 @@
+.df-material {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.df-material--pending {
+  opacity: 0.78;
+
+  .df-card__top {
+    align-items: flex-start;
+  }
+}

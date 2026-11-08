@@ -1,0 +1,98 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-title>Speakers</ion-title>
+    <ion-buttons slot="end">
+      <app-year-switcher></app-year-switcher>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class="df-page">
+    <span class="df-eyebrow">Intervenant·es</span>
+    <h1 class="df-title df-title--page">Les voix de l'édition</h1>
+    <p class="df-sub">
+      Les personnes qui partagent un retour de terrain, une méthode ou une idée
+      à discuter. Les profils sont mis à jour au fil des annonces.
+    </p>
+
+    <div class="df-tools">
+      <ion-searchbar
+        class="df-search"
+        placeholder="Rechercher un nom, un rôle, une entreprise"
+        [debounce]="120"
+        (ionInput)="onSearch($event)"
+      ></ion-searchbar>
+
+      <div class="df-row">
+        <button
+          class="df-chip df-chip--button"
+          type="button"
+          [class.is-active]="trackFilter() === 'all'"
+          (click)="selectTrack('all')"
+          >
+          Tous
+        </button>
+        @for (track of c.tracks; track track) {
+          <button
+            class="df-chip df-chip--button"
+            type="button"
+            [class.is-active]="trackFilter() === track.id"
+            (click)="selectTrack(track.id)"
+            >
+            <span class="df-track-dot" [style.--track]="track.color"></span>
+            {{ track.name }}
+          </button>
+        }
+      </div>
+    </div>
+
+    <div class="df-row df-dim df-mono" style="margin: 16px 0 10px; font-size: 0.7rem">
+      {{ filtered().length }} profil·s affiché·s
+    </div>
+
+    @if (filtered().length) {
+      <div class="df-grid df-grid--3">
+        @for (speaker of filtered(); track speaker) {
+          <a
+            class="df-card df-card--link df-speaker"
+            [routerLink]="['/', c.year, 'speakers', speaker.id]"
+            >
+            <div class="df-card__top">
+              <span class="df-avatar df-avatar--lg">{{ speaker.name | initials }}</span>
+              <div class="df-speaker__head">
+                @if (speaker.trackId) {
+                  <span
+                    class="df-badge"
+                    [style.color]="trackColor(speaker.trackId)"
+                    >
+                    {{ trackName(speaker.trackId) }}
+                  </span>
+                }
+                <h2 class="df-card__title" style="margin-top: 8px">{{ speaker.name }}</h2>
+                <p class="df-card__text" style="margin: 4px 0 0">
+                  {{ speaker.role }}@if (speaker.company) {
+                  · {{ speaker.company }}
+                }
+              </p>
+            </div>
+          </div>
+          <p class="df-card__text">{{ speaker.bio }}</p>
+          <div class="df-card__meta">
+            @if (speaker.featured) {
+              <span>★ Profil mis en avant</span>
+            }
+            @if (!speaker.featured) {
+              <span>Voir la fiche</span>
+            }
+            <ion-icon name="arrow-forward-outline"></ion-icon>
+          </div>
+        </a>
+      }
+    </div>
+  } @else {
+    <div class="df-empty">Aucun profil ne correspond à cette recherche.</div>
+  }
+
+</div>
+</ion-content>

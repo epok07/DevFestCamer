@@ -1,0 +1,90 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-title>Ressources</ion-title>
+    <ion-buttons slot="start">
+      <a class="df-btn df-btn--ghost" [routerLink]="['/', c.year, 'more']">
+        <ion-icon name="arrow-back-outline"></ion-icon>
+        Plus
+      </a>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <app-year-switcher></app-year-switcher>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div class="df-page">
+    <span class="df-eyebrow">Ressources</span>
+    <h1 class="df-title df-title--page">Documents & liens utiles</h1>
+    <p class="df-sub">
+      Les documents pratiques de l’édition et les liens à garder sous la main.
+      Les supports des sessions sont publiés après l’événement, avec l’accord
+      des intervenant·es.
+    </p>
+
+    <section class="df-section">
+      <div class="df-grid df-grid--2">
+        @for (material of available(); track material) {
+          <article class="df-card df-material">
+            <div class="df-card__top">
+              <span class="df-avatar">
+                <ion-icon [name]="icon(material.type)" style="font-size: 1.2rem"></ion-icon>
+              </span>
+              <div>
+                <span class="df-badge">{{ material.type }}</span>
+                <h2 class="df-card__title" style="margin-top: 8px">{{ material.title }}</h2>
+              </div>
+            </div>
+            <p class="df-card__text">{{ material.description }}</p>
+            <div class="df-spread" style="margin-top: 14px">
+              <span class="df-mono df-dim" style="font-size: 0.66rem">
+                {{ material.size || 'Lien externe' }}
+              </span>
+              @if (material.url) {
+                <a
+                  class="df-btn df-btn--primary"
+                  [href]="material.url"
+                  target="_blank"
+                  rel="noopener"
+                  >
+                  <ion-icon name="open-outline"></ion-icon>
+                  Ouvrir
+                </a>
+              }
+            </div>
+          </article>
+        }
+      </div>
+    </section>
+
+    @if (coming().length) {
+      <section class="df-section">
+        <span class="df-eyebrow">À venir</span>
+        <h2 class="df-title df-title--page">Publié après le DevFest</h2>
+        <div class="df-list" style="margin-top: 14px">
+          @for (material of coming(); track material) {
+            <article class="df-card df-material df-material--pending">
+              <div class="df-card__top">
+                <span class="df-avatar">
+                  <ion-icon [name]="icon(material.type)" style="font-size: 1.2rem"></ion-icon>
+                </span>
+                <div>
+                  <span class="df-badge">{{ material.type }}</span>
+                  <h2 class="df-card__title" style="margin-top: 8px">{{ material.title }}</h2>
+                  <p class="df-card__text">{{ material.description }}</p>
+                </div>
+                <span class="df-chip">Bientôt</span>
+              </div>
+            </article>
+          }
+        </div>
+      </section>
+    }
+
+    <div class="df-notice" style="margin-top: 24px">
+      Un document manque ou un lien est cassé ? Écrivez à
+      <a [href]="'mailto:' + c.links.contactEmail">{{ c.links.contactEmail }}</a>.
+    </div>
+  </div>
+</ion-content>

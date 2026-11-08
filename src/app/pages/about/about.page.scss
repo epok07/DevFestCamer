@@ -1,0 +1,30 @@
+.df-code {
+  margin: 16px 0;
+  padding: 16px;
+  border: 1px solid var(--df-line);
+  border-radius: 14px;
+  background: var(--df-bg-soft);
+  color: var(--df-accent);
+  font-family: var(--df-font-mono);
+  font-size: 0.76rem;
+  line-height: 1.6;
+  overflow-x: auto;
+}
+
+code {
+  font-family: var(--df-font-mono);
+  font-size: 0.84em;
+  color: var(--df-accent-2);
+}
+
+.df-about-footer {
+  margin-top: 44px;
+  padding-top: 20px;
+  border-top: 1px solid var(--df-line);
+
+  p {
+    margin: 8px 0 0;
+    font-size: 0.8rem;
+    line-height: 1.6;
+  }
+}
