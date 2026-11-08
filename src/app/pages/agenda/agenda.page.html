@@ -23,6 +23,44 @@
       </button>
     </div>
 
+    @if (timeline(); as t) {
+      <section
+        class="df-clock"
+        [class.df-clock--live]="t.state === 'during'"
+        [class.df-clock--past]="t.state === 'after'"
+        >
+        <div class="df-clock__head">
+          <span class="df-mono df-clock__status">
+            <span class="df-clock__pulse" aria-hidden="true"></span>
+            {{ t.status }}
+          </span>
+          <span class="df-mono df-dim">{{ t.nowLabel }}</span>
+        </div>
+
+        <div
+          class="df-clock__track"
+          role="progressbar"
+          aria-valuemin="0"
+          aria-valuemax="100"
+          [attr.aria-valuenow]="t.progress"
+          [attr.aria-valuetext]="t.status"
+          >
+          <span class="df-clock__fill" [style.width.%]="t.progress"></span>
+          @if (t.state === 'during') {
+            <span class="df-clock__pin" [style.left.%]="t.progress" aria-hidden="true">
+              <span class="df-clock__dot"></span>
+              <span class="df-clock__bubble">{{ t.nowLabel }}</span>
+            </span>
+          }
+        </div>
+
+        <div class="df-clock__scale">
+          <span class="df-mono">{{ t.startLabel }}</span>
+          <span class="df-mono">{{ t.endLabel }}</span>
+        </div>
+      </section>
+    }
+
     <div class="df-row" style="margin-bottom: 10px">
       <button
         class="df-chip df-chip--button"
@@ -55,9 +93,24 @@
     @if (filteredSessions().length) {
       <div class="df-timeline">
         @for (session of filteredSessions(); track session) {
+          @if (showNowMarker(session)) {
+            <div
+              class="df-now-line"
+              role="separator"
+              [attr.aria-label]="'Maintenant, ' + nowLabel()"
+              >
+              <span class="df-now-line__label">
+                <span class="df-now-line__dot" aria-hidden="true"></span>
+                Maintenant · {{ nowLabel() }}
+              </span>
+            </div>
+          }
+
           <button
             class="df-session"
             type="button"
+            [class.is-live]="isLive(session)"
+            [class.is-past]="isPast(session)"
             (click)="open(session)"
             >
             <span class="df-session__time">{{ session.start }}<small>{{ session.end }}</small></span>
