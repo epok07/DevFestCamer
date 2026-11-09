@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" class="ion-palette-dark" data-theme="dark">
 
 <head>
   <meta charset="utf-8" />
@@ -7,12 +7,34 @@
 
   <base href="/" />
 
-  <meta name="color-scheme" content="dark" />
+  <meta name="color-scheme" content="dark light" />
   <meta name="viewport" content="viewport-fit=cover, width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <meta name="format-detection" content="telephone=no" />
   <meta name="msapplication-tap-highlight" content="no" />
   <meta name="description" content="L'application compagnon du DevFest Cameroun : programme, intervenant·es, plan du lieu, matériel, participant·es, sponsors et contacts." />
   <meta name="theme-color" content="#060b13" />
+
+  <script>
+    // Apply the stored theme (or the system preference) before the first paint.
+    (function () {
+      try {
+        var stored = localStorage.getItem('devfestcamer.theme');
+        var light = stored
+          ? stored === 'light'
+          : window.matchMedia('(prefers-color-scheme: light)').matches;
+        var root = document.documentElement;
+        root.setAttribute('data-theme', light ? 'light' : 'dark');
+        root.classList.toggle('ion-palette-dark', !light);
+        root.style.colorScheme = light ? 'light' : 'dark';
+        var meta = document.querySelector('meta[name="theme-color"]');
+        if (meta) {
+          meta.setAttribute('content', light ? '#f4f7fb' : '#060b13');
+        }
+      } catch (error) {
+        // Keep the dark defaults from the markup.
+      }
+    })();
+  </script>
 
   <link rel="icon" type="image/svg+xml" href="assets/icons/icon.svg" />
   <link rel="apple-touch-icon" href="assets/icons/icon.svg" />

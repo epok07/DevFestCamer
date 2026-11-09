@@ -13,7 +13,7 @@
   border: 1px solid var(--df-line);
   border-radius: 16px;
   overflow: hidden;
-  background: #060b13;
+  background: var(--df-map-bg);
 }
 
 /* The SVG is injected at runtime, so its inner rules are not scoped. */

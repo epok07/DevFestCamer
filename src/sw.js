@@ -1,5 +1,5 @@
 /* DevFestCamer offline shell. Registered only in production builds. */
-const CACHE = 'devfestcamer-v1';
+const CACHE = 'devfestcamer-v2';
 const CORE = ['/', '/index.html', '/assets/manifest.webmanifest'];
 
 self.addEventListener('install', (event) => {

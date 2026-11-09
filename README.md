@@ -16,7 +16,8 @@ ensuite.
 - Ionic 9 + Angular 22 (modules NgModule, composants non-standalone)
 - État réactif basé sur les signals Angular
 - Contenu 100 % statique, chargé depuis des fichiers JSON versionnés
-- Thème sombre « terminal / cyber », SVG inline pour le plan du lieu
+- Thème sombre « terminal / cyber » par défaut, thème clair au choix
+- SVG inline pour le plan du lieu, recoloré par les variables du thème
 - Service worker et manifeste pour l'installation PWA
 
 ## Démarrer
@@ -129,6 +130,17 @@ retirez `demo` (ou passez-le à `false`) pour masquer les avertissements.
 
 En développement, le service worker n'est pas actif : un rechargement classique
 suffit à voir les changements.
+
+## Thèmes
+
+L'interface suit le thème sombre par défaut. La page **Plus → Apparence**
+propose un thème clair, mémorisé dans `localStorage`
+(`devfestcamer.theme`). Tant qu'aucun choix n'a été fait, l'application suit la
+préférence du système. Le thème est appliqué sur `<html>` via
+`data-theme="light|dark"` et la classe `ion-palette-dark`; le script inline de
+`src/index.html` évite un flash de mauvaise palette au premier rendu. Les
+couleurs sont centralisées dans `src/theme/variables.scss` (`--df-*`, dont les
+variables `--df-map-*` lues par le SVG du plan).
 
 ## Déploiement
 

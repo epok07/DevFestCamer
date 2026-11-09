@@ -1,4 +1,4 @@
-/* DevFestCamer theme — dark, terminal-inspired, accessible. */
+/* DevFestCamer theme — dark by default, light variant, terminal-inspired. */
 :root {
   --df-bg: #060b13;
   --df-bg-soft: #08111d;
@@ -23,6 +23,48 @@
   --df-font-body: "Inter", "Segoe UI", system-ui, -apple-system, sans-serif;
   --df-font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
 
+  /* Surfaces and accents that need a different value in the light theme. */
+  --df-body-glow-a: rgba(92, 242, 196, 0.08);
+  --df-body-glow-b: rgba(122, 162, 255, 0.09);
+  --df-grid-line: rgba(122, 162, 255, 0.028);
+  --df-toolbar-bg: rgba(6, 11, 19, 0.82);
+  --df-tabbar-bg: rgba(6, 11, 19, 0.94);
+  --df-on-accent: #04120e;
+  --df-accent-soft: rgba(92, 242, 196, 0.08);
+  --df-chip-bg: rgba(122, 162, 255, 0.06);
+  --df-badge-bg: rgba(122, 162, 255, 0.12);
+  --df-panel-sheen: rgba(122, 162, 255, 0.055);
+  --df-avatar-a: #12304a;
+  --df-avatar-b: #0b1626;
+  --df-avatar-glow: rgba(92, 242, 196, 0.3);
+  --df-hero-a: #0b1829;
+  --df-hero-b: #070d17;
+  --df-hero-glow-a: rgba(92, 242, 196, 0.16);
+  --df-hero-glow-b: rgba(122, 162, 255, 0.16);
+  --df-hero-text-a: #f2fff9;
+  --df-hero-text-b: #5cf2c4;
+  --df-hero-text-c: #7aa2ff;
+  --df-stat-bg: rgba(11, 22, 38, 0.7);
+
+  /* Venue map (the SVG reads these variables). */
+  --df-map-bg: #060b13;
+  --df-map-grid: #122033;
+  --df-map-room: #0b1524;
+  --df-map-room-stroke: #23405c;
+  --df-map-room-hover: #102338;
+  --df-map-room-hover-stroke: #3f6f96;
+  --df-map-room-active: #0c3a31;
+  --df-map-text: #d7e6f6;
+  --df-map-sub: #7f95ab;
+  --df-map-muted: #6b8199;
+  --df-map-shell: #2b4b68;
+  --df-map-zone: #08111d;
+  --df-map-zone-stroke: #182b40;
+  --df-map-booth: #0a1524;
+  --df-map-booth-stroke: #1b3147;
+  --df-map-seat: #23405c;
+  --df-map-seat-soft: #1c334a;
+
   --ion-font-family: var(--df-font-body);
   --ion-background-color: var(--df-bg);
   --ion-background-color-rgb: 6, 11, 19;
@@ -31,7 +73,7 @@
   --ion-card-background: var(--df-panel);
   --ion-item-background: transparent;
   --ion-toolbar-background: transparent;
-  --ion-tab-bar-background: rgba(6, 11, 19, 0.92);
+  --ion-tab-bar-background: var(--df-tabbar-bg);
   --ion-border-color: var(--df-line);
 
   --ion-color-primary: #5cf2c4;
@@ -72,4 +114,113 @@
   --ion-color-danger-contrast: #1f050b;
   --ion-color-danger-shade: #e05e79;
   --ion-color-danger-tint: #ff7a96;
+}
+
+/* Light theme: driven by [data-theme="light"] on <html>. */
+:root[data-theme="light"] {
+  --df-bg: #f4f7fb;
+  --df-bg-soft: #e9f0f8;
+  --df-panel: #ffffff;
+  --df-panel-2: #f2f6fc;
+  --df-panel-3: #e5edf8;
+  --df-line: rgba(20, 50, 90, 0.14);
+  --df-line-strong: rgba(11, 122, 93, 0.45);
+  --df-text: #0e1b2c;
+  --df-muted: #48596f;
+  --df-dim: #647589;
+  --df-accent: #0b7a5d;
+  --df-accent-2: #2f62d8;
+  --df-warn: #9a6100;
+  --df-danger: #b32345;
+  --df-shadow: 0 18px 45px rgba(17, 45, 80, 0.14);
+
+  --df-body-glow-a: rgba(11, 122, 93, 0.1);
+  --df-body-glow-b: rgba(47, 98, 216, 0.1);
+  --df-grid-line: rgba(20, 50, 90, 0.05);
+  --df-toolbar-bg: rgba(244, 247, 251, 0.85);
+  --df-tabbar-bg: rgba(255, 255, 255, 0.95);
+  --df-on-accent: #ffffff;
+  --df-accent-soft: rgba(11, 122, 93, 0.1);
+  --df-chip-bg: rgba(47, 98, 216, 0.06);
+  --df-badge-bg: rgba(47, 98, 216, 0.1);
+  --df-panel-sheen: rgba(47, 98, 216, 0.05);
+  --df-avatar-a: #d8e6f8;
+  --df-avatar-b: #eef4fc;
+  --df-avatar-glow: rgba(11, 122, 93, 0.22);
+  --df-hero-a: #ffffff;
+  --df-hero-b: #eaf1fa;
+  --df-hero-glow-a: rgba(11, 122, 93, 0.14);
+  --df-hero-glow-b: rgba(47, 98, 216, 0.12);
+  --df-hero-text-a: #0e1b2c;
+  --df-hero-text-b: #0b7a5d;
+  --df-hero-text-c: #2f62d8;
+  --df-stat-bg: rgba(255, 255, 255, 0.82);
+
+  --df-map-bg: #f7fafd;
+  --df-map-grid: #d9e3f0;
+  --df-map-room: #ffffff;
+  --df-map-room-stroke: #b6c8dd;
+  --df-map-room-hover: #eaf2fb;
+  --df-map-room-hover-stroke: #6f8dad;
+  --df-map-room-active: #ddf3ea;
+  --df-map-text: #0e1b2c;
+  --df-map-sub: #5a6e85;
+  --df-map-muted: #647589;
+  --df-map-shell: #9fb4cb;
+  --df-map-zone: #eef3fa;
+  --df-map-zone-stroke: #cfdbeb;
+  --df-map-booth: #e7eff9;
+  --df-map-booth-stroke: #c2d2e5;
+  --df-map-seat: #b6c8dd;
+  --df-map-seat-soft: #cbd8e7;
+
+  --ion-background-color: var(--df-bg);
+  --ion-background-color-rgb: 244, 247, 251;
+  --ion-text-color: var(--df-text);
+  --ion-text-color-rgb: 14, 27, 44;
+  --ion-card-background: var(--df-panel);
+  --ion-item-background: transparent;
+  --ion-toolbar-background: transparent;
+  --ion-tab-bar-background: var(--df-tabbar-bg);
+  --ion-border-color: var(--df-line);
+
+  --ion-color-primary: #0b7a5d;
+  --ion-color-primary-rgb: 11, 122, 93;
+  --ion-color-primary-contrast: #ffffff;
+  --ion-color-primary-contrast-rgb: 255, 255, 255;
+  --ion-color-primary-shade: #0a6b52;
+  --ion-color-primary-tint: #238a6f;
+
+  --ion-color-secondary: #2f62d8;
+  --ion-color-secondary-rgb: 47, 98, 216;
+  --ion-color-secondary-contrast: #ffffff;
+  --ion-color-secondary-contrast-rgb: 255, 255, 255;
+  --ion-color-secondary-shade: #2956be;
+  --ion-color-secondary-tint: #4472dc;
+
+  --ion-color-tertiary: #9a6100;
+  --ion-color-tertiary-rgb: 154, 97, 0;
+  --ion-color-tertiary-contrast: #ffffff;
+  --ion-color-tertiary-contrast-rgb: 255, 255, 255;
+  --ion-color-tertiary-shade: #885500;
+  --ion-color-tertiary-tint: #a5711a;
+
+  --ion-color-success: #1f7a3f;
+  --ion-color-success-rgb: 31, 122, 63;
+  --ion-color-success-contrast: #ffffff;
+  --ion-color-success-shade: #1b6b37;
+  --ion-color-success-tint: #358752;
+
+  --ion-color-warning: #9a6100;
+  --ion-color-warning-rgb: 154, 97, 0;
+  --ion-color-warning-contrast: #ffffff;
+  --ion-color-warning-shade: #885500;
+  --ion-color-warning-tint: #a5711a;
+
+  --ion-color-danger: #b32345;
+  --ion-color-danger-rgb: 179, 35, 69;
+  --ion-color-danger-contrast: #ffffff;
+  --ion-color-danger-contrast-rgb: 255, 255, 255;
+  --ion-color-danger-shade: #9e1f3d;
+  --ion-color-danger-tint: #bb3958;
 }
