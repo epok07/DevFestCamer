@@ -11,7 +11,10 @@ platformBrowserDynamic()
     }
 
     window.addEventListener('load', () => {
-      navigator.serviceWorker.register('/sw.js').catch((error) => {
+      // Register relative to the document base so the app also works when it is
+      // served from a sub-path (for example GitHub Pages project sites).
+      const swUrl = new URL('sw.js', document.baseURI).href;
+      navigator.serviceWorker.register(swUrl).catch((error) => {
         console.warn('Service worker registration failed', error);
       });
     });

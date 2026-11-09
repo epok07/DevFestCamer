@@ -152,6 +152,38 @@ Le build est généré dans `www/`. Pour un hébergement statique :
   `<base href="...">` dans `src/index.html` ainsi que `start_url` et `scope`
   dans le manifeste.
 
+### Démo GitHub Pages
+
+Une démo est publiée automatiquement à chaque push sur `main` :
+
+**https://epok07.github.io/DevFestCamer/**
+
+Le workflow `.github/workflows/deploy.yml` installe les dépendances, construit
+avec `--base-href /DevFestCamer/`, copie `www/index.html` en `www/404.html`
+(fallback des routes profondes), puis publie `www/` via GitHub Pages. Le nom du
+cache du service worker est versionné avec le SHA du commit pour que les
+installations existantes se mettent à jour.
+
+Pour republier manuellement : onglet **Actions** → *Deploy demo to GitHub
+Pages* → **Run workflow**.
+
+Limites de cette démo :
+
+- le contenu reste celui de `2026.json` avec `"demo": true` (participants et
+  témoignages fictifs, liens `example.com`) ;
+- l'application est servie sous `/DevFestCamer/` : le `--base-href` est compilé
+  dans le build, un déploiement à la racine ou sur un domaine personnalisé
+  nécessite un nouveau build ;
+- les routes profondes passent par `404.html` : elles s'affichent correctement
+  mais GitHub renvoie un statut HTTP 404 ;
+- pas de backend : pas d'inscription, d'authentification, de notifications ni de
+  mise à jour en direct ; toute modification de contenu demande un commit et un
+  redéploiement ;
+- quotas GitHub Pages (site public, ~1 Go, ~100 Go/mois, ~10 builds/heure) : à
+  éviter comme hébergement principal le jour de l'événement ;
+- icônes PWA en SVG uniquement (pas de PNG 192/512), installation non garantie
+  sur iOS et certains navigateurs.
+
 ## Notes
 
 Projet communautaire non officiel, inspiré de l'Ionic Conference App et

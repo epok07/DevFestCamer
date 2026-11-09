@@ -1,6 +1,15 @@
 /* DevFestCamer offline shell. Registered only in production builds. */
 const CACHE = 'devfestcamer-v2';
-const CORE = ['/', '/index.html', '/assets/manifest.webmanifest'];
+
+// Resolve the app root from the service worker scope so the worker also works
+// when the app is hosted under a sub-path (e.g. /DevFestCamer/ on GitHub Pages).
+const ROOT = new URL('./', self.location.href);
+const SHELL = new URL('index.html', ROOT).href;
+const CORE = [
+  ROOT.href,
+  SHELL,
+  new URL('assets/manifest.webmanifest', ROOT).href,
+];
 
 self.addEventListener('install', (event) => {
   self.skipWaiting();
@@ -28,10 +37,10 @@ self.addEventListener('fetch', (event) => {
       fetch(request)
         .then((response) => {
           const copy = response.clone();
-          caches.open(CACHE).then((cache) => cache.put('/index.html', copy));
+          caches.open(CACHE).then((cache) => cache.put(SHELL, copy));
           return response;
         })
-        .catch(() => caches.match('/index.html').then((cached) => cached || caches.match('/')))
+        .catch(() => caches.match(SHELL).then((cached) => cached || caches.match(ROOT.href)))
     );
     return;
   }

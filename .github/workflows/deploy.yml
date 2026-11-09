@@ -1,0 +1,64 @@
+name: Deploy demo to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build demo for the /DevFestCamer/ sub-path
+        run: npx ng build --base-href /DevFestCamer/
+
+      - name: Prepare static hosting artifacts
+        run: |
+          set -euo pipefail
+          # Bust the service worker cache on every deployment so installed
+          # demos pick up the new build instead of serving stale assets.
+          sed -i "s/const CACHE = 'devfestcamer-[^']*'/const CACHE = 'devfestcamer-${GITHUB_SHA::8}'/" www/sw.js
+          # SPA fallback: GitHub Pages serves 404.html for unknown paths.
+          cp www/index.html www/404.html
+          grep -q "devfestcamer-${GITHUB_SHA::8}" www/sw.js
+          grep -q 'href="/DevFestCamer/"' www/index.html
+
+      - name: Configure Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: www
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
